@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.tabletopsupp.R;
@@ -35,6 +36,7 @@ public class Login extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intent);
         }
 
     }
@@ -46,7 +48,14 @@ public class Login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         CreateRequest();
-        signIn();
+
+        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+
+        });
 
 
     }
@@ -95,9 +104,12 @@ public class Login extends AppCompatActivity {
 
                             FirebaseUser user = mAuth.getCurrentUser();
 
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
 
+                            Toast.makeText(Login.this, "Sorry auth fail", Toast.LENGTH_SHORT).show();
 
                         }
                     }
