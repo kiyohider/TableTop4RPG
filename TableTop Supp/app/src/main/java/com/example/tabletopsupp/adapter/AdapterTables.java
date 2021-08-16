@@ -36,7 +36,7 @@ public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHold
         holder.tableName.setText(tableMaster.getAdventureName());
         holder.masterName.setText(tableMaster.getmasterName());
         holder.number.setText(tableMaster.getPlayNumber());
-
+        holder.systemName.setText(tableMaster.getSystemName());
     }
 
     @Override
@@ -50,6 +50,7 @@ public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHold
         TextView tableName;
         TextView masterName;
         TextView number;
+        TextView systemName;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -59,6 +60,7 @@ public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHold
             tableName = itemView.findViewById(R.id.adventureNameTxt);
             masterName = itemView.findViewById(R.id.masterNameTxt);
             number = itemView.findViewById(R.id.playNumberTxt);
+            systemName = itemView.findViewById(R.id.systemNameTxt);
         }
     }
 

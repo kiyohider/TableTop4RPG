@@ -39,19 +39,19 @@ public class TablesFragment extends Fragment {
     }
 
     public void makeTables(){
-        TableMaster tables = new TableMaster("kiyohide", "zenodia", "5");
+        TableMaster tables = new TableMaster("kiyohide", "zenodia", "5", "alahu");
         this.tableList.add(tables);
 
-        tables = new TableMaster("jao", "xitauri", "5");
+        tables = new TableMaster("jao", "xitauri", "5", "alahu");
         this.tableList.add(tables);
 
-        tables = new TableMaster("jonne", "horda", "5");
+        tables = new TableMaster("jonne", "horda", "5", "alahu");
         this.tableList.add(tables);
 
-        tables = new TableMaster("zed", "alliance", "5");
+        tables = new TableMaster("zed", "alliance", "5", "alahu");
         this.tableList.add(tables);
 
-        tables = new TableMaster("lola", "bicotinico", "5");
+        tables = new TableMaster("lola", "bicotinico", "5", "alahu");
         this.tableList.add(tables);
 
     }

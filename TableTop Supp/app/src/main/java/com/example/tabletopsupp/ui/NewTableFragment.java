@@ -1,66 +1,112 @@
 package com.example.tabletopsupp.ui;
 
+
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.tabletopsupp.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NewTableFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class NewTableFragment extends Fragment {
+import java.util.HashMap;
+import java.util.Map;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class NewTableFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    public NewTableFragment() {
-        // Required empty public constructor
+    public void question1from10() {
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewTableFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NewTableFragment newInstance(String param1, String param2) {
-        NewTableFragment fragment = new NewTableFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private Spinner spinner;
+    private String itemSelected;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private EditText Mname, Aname;
+    private Button add;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_table, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_new_table, container, false);
+        spinner = rootView.findViewById(R.id.spinner);
+        Mname = rootView.findViewById(R.id.masterName);
+        Aname = rootView.findViewById(R.id.adventureName);
+        add = rootView.findViewById(R.id.addNewTable);
+
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.system, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
+        AddData();
+
+        return rootView;
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        itemSelected = (String) parent.getItemAtPosition(position);
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    public void AddData() {
+
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String sucesso = "succes", falha = "failure";
+                Map<String, Object> user = new HashMap<>();
+                user.put("masterName", Mname.getText());
+                user.put("adventureName", Aname.getText());
+                user.put("system", itemSelected);
+
+// Add a new document with a generated ID
+                db.collection("user")
+                        .add(user)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(sucesso, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(falha, "Error adding document", e);
+                            }
+                        });
+
+            }
+        });
+
+    }
+
+
 }

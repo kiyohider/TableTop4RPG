@@ -7,6 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Spinner;
 
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.ui.NewTableFragment;
@@ -17,6 +18,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
 public class GameMasterNavigation extends AppCompatActivity {
+    private Spinner spinner;
     private SmartTabLayout smartTabLayout;
     private ViewPager viewPager;
     @Override
@@ -27,6 +29,7 @@ public class GameMasterNavigation extends AppCompatActivity {
         //get to config action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
 
         smartTabLayout = findViewById(R.id.viewPagerTab);
         viewPager = findViewById(R.id.viewPager);
@@ -53,4 +56,6 @@ public class GameMasterNavigation extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
