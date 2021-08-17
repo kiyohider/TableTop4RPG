@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void PlayerPage(View view) {
+    public void GameMasterPage(View view) {
         Intent intent = new Intent(getApplicationContext(),GameMasterNavigation.class);
         startActivity(intent);
     }

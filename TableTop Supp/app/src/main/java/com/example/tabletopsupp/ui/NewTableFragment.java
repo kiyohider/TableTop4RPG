@@ -43,11 +43,11 @@ public class NewTableFragment extends Fragment implements AdapterView.OnItemSele
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_new_table, container, false);
-        spinner = rootView.findViewById(R.id.spinner);
-        Mname = rootView.findViewById(R.id.masterName);
-        Aname = rootView.findViewById(R.id.adventureName);
-        add = rootView.findViewById(R.id.addNewTable);
+        View view = inflater.inflate(R.layout.fragment_new_table, container, false);
+        spinner = view.findViewById(R.id.spinner);
+        Mname = view.findViewById(R.id.masterName);
+        Aname = view.findViewById(R.id.adventureName);
+        add = view.findViewById(R.id.addNewTable);
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
@@ -60,7 +60,7 @@ public class NewTableFragment extends Fragment implements AdapterView.OnItemSele
 
         AddData();
 
-        return rootView;
+        return view;
     }
 
     @Override

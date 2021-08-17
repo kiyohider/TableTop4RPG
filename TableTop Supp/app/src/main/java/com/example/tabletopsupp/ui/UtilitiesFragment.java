@@ -1,66 +1,79 @@
 package com.example.tabletopsupp.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tabletopsupp.R;
+import com.example.tabletopsupp.activity.GameMasterNavigation;
+import com.example.tabletopsupp.activity.ItenCreation;
+import com.example.tabletopsupp.adapter.AdapterItens;
+import com.example.tabletopsupp.adapter.AdapterTables;
+import com.example.tabletopsupp.model.ItensMaster;
+import com.example.tabletopsupp.model.TableMaster;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link UtilitiesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class UtilitiesFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public UtilitiesFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment UtilitiesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static UtilitiesFragment newInstance(String param1, String param2) {
-        UtilitiesFragment fragment = new UtilitiesFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    private RecyclerView recyclerView;
+    private List<ItensMaster> tableList = new ArrayList<>();
+    private FloatingActionButton floatingActionButton;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_utilities, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_utilities, container, false);
+        floatingActionButton = view.findViewById(R.id.fab);
+        recyclerView = view.findViewById(R.id.recyclerTablesItens);
+
+        this.makeItens();
+        AdapterItens adapterItens = new AdapterItens(tableList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapterItens);
+
+        addIten();
+        return view;
     }
+
+    public void addIten() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),ItenCreation.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+    public void makeItens(){
+        ItensMaster itensMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
+        this.tableList.add(itensMaster);
+
+         itensMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
+        this.tableList.add(itensMaster);
+
+         itensMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
+        this.tableList.add(itensMaster);
+
+         itensMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
+        this.tableList.add(itensMaster);
+
+
+
+    }
+
 }
