@@ -85,7 +85,7 @@ public class ItenCreation extends AppCompatActivity {
     }
 
     private void saveUserStore(){
-        String filename = UUID.randomUUID().toString();
+        String filename = itemName.getText().toString();
         final StorageReference reference = FirebaseStorage.getInstance().getReference("/images/"+ filename);
         reference.putFile(selectedUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
