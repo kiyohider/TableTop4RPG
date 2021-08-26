@@ -4,50 +4,50 @@ import android.media.Image;
 
 public class ItensMaster {
 
-    private  String itenName;
-    private  String itenDescription;
-    private int itenPhoto;
-    private  int itenWeigth;
+    private  String itemName;
+    private  String itemDescription;
+    private String itemPhoto;
+    private  int itemWeigth;
 
     public ItensMaster(){
 
     }
-    public ItensMaster(String itenName, String itenDescription, int itenPhoto, int itenWeigth) {
-        this.itenName = itenName;
-        this.itenDescription = itenDescription;
-        this.itenPhoto = itenPhoto;
-        this.itenWeigth = itenWeigth;
+    public ItensMaster(String itemName, String itemDescription, String itemPhoto, int itemWeigth) {
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.itemPhoto = itemPhoto;
+        this.itemWeigth = itemWeigth;
     }
 
-    public String getItenName() {
-        return itenName;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setItenName(String itenName) {
-        this.itenName = itenName;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
-    public String getItenDescription() {
-        return itenDescription;
+    public String getItemDescription() {
+        return itemDescription;
     }
 
-    public void setItenDescription(String itenDescription) {
-        this.itenDescription = itenDescription;
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
     }
 
-    public int getItenPhoto() {
-        return itenPhoto;
+    public String getItemPhoto() {
+        return itemPhoto;
     }
 
-    public void setItenPhoto(int itenPhoto) {
-        this.itenPhoto = itenPhoto;
+    public void setItemPhoto(String itemPhoto) {
+        this.itemPhoto = itemPhoto;
     }
 
-    public int getItenWeigth() {
-        return itenWeigth;
+    public int getItemWeigth() {
+        return itemWeigth;
     }
 
-    public void setItenWeigth(int itenWeigth) {
-        this.itenWeigth = itenWeigth;
+    public void setItemWeigth(int itemWeigth) {
+        this.itemWeigth = itemWeigth;
     }
 }

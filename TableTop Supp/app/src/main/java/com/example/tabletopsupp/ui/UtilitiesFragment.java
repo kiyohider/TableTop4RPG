@@ -12,14 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tabletopsupp.R;
-import com.example.tabletopsupp.activity.GameMasterNavigation;
 import com.example.tabletopsupp.activity.ItenCreation;
 import com.example.tabletopsupp.adapter.AdapterItens;
-import com.example.tabletopsupp.adapter.AdapterTables;
 import com.example.tabletopsupp.model.ItensMaster;
-import com.example.tabletopsupp.model.TableMaster;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,21 +31,21 @@ public class UtilitiesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_utilities, container, false);
-        floatingActionButton = view.findViewById(R.id.fab);
-        recyclerView = view.findViewById(R.id.recyclerTablesItens);
+        floatingActionButton = view.findViewById(R.id.addItem);
+        recyclerView = view.findViewById(R.id.recyclerTablesItems);
 
-        this.makeItens();
-        AdapterItens adapterItens = new AdapterItens(tableList);
+      //  this.makeItems();
+        AdapterItens adapterItems = new AdapterItens(tableList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapterItens);
+        recyclerView.setAdapter(adapterItems);
 
-        addIten();
+        addItem();
         return view;
     }
 
-    public void addIten() {
+    public void addItem() {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,21 +55,21 @@ public class UtilitiesFragment extends Fragment {
         });
 
     }
-    public void makeItens(){
-        ItensMaster itensMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
-        this.tableList.add(itensMaster);
+    //public void makeItems(){
+     //   ItensMaster itemsMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
+     //   this.tableList.add(itemsMaster);
 
-         itensMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
-        this.tableList.add(itensMaster);
+     //    itemsMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
+      //  this.tableList.add(itemsMaster);
 
-         itensMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
-        this.tableList.add(itensMaster);
+       //  itemsMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
+      //  this.tableList.add(itemsMaster);
 
-         itensMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
-        this.tableList.add(itensMaster);
+      //   itemsMaster = new ItensMaster("revolver","chablau",R.drawable._017_11_16_17_03_05,10);
+      //  this.tableList.add(itemsMaster);
 
 
 
-    }
+  //  }
 
 }

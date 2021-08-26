@@ -34,9 +34,9 @@ public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        ItensMaster itensMaster = tablesList.get(position);
-        holder.itenName.setText((itensMaster.getItenName()));
-        holder.itenImage.setImageResource(itensMaster.getItenPhoto());
+        ItensMaster itemsMaster = tablesList.get(position);
+        holder.itemName.setText((itemsMaster.getItemName()));
+       // holder.itemImage.setImageResource(itemsMaster.getItemPhoto());
 
     }
 
@@ -48,8 +48,8 @@ public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder
 
     public  class MyViewHolder extends  RecyclerView.ViewHolder{
 
-        TextView itenName;
-        ImageView itenImage;
+        TextView itemName;
+        ImageView itemImage;
 
 
 
@@ -57,8 +57,8 @@ public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder
 
             super(itemView);
 
-            itenName = itemView.findViewById(R.id.itenNameTxt);
-            itenImage = itemView.findViewById(R.id.itenImage);
+            itemName = itemView.findViewById(R.id.itemNameTxt);
+            itemImage = itemView.findViewById(R.id.itemImage);
 
         }
     }

@@ -21,7 +21,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/itenNameTxt"
+                android:id="@+id/itemNameTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -33,7 +33,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/itenImage"
+                android:id="@+id/itemImage"
                 android:layout_width="10dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
