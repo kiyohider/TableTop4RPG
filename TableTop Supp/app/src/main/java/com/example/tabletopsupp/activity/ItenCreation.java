@@ -23,6 +23,7 @@ import com.example.tabletopsupp.model.ItensMaster;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -85,8 +86,9 @@ public class ItenCreation extends AppCompatActivity {
     }
 
     private void saveUserStore(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String filename = itemName.getText().toString();
-        final StorageReference reference = FirebaseStorage.getInstance().getReference("/images/"+ filename);
+        final StorageReference reference = FirebaseStorage.getInstance().getReference("/"+user+"/"+ filename);
         reference.putFile(selectedUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -104,7 +106,8 @@ public class ItenCreation extends AppCompatActivity {
                                 ItensMaster itens = new ItensMaster(itemname,itemdescription,imageUrl,Weight);
 
 
-                                FirebaseFirestore.getInstance().collection("items")
+                                FirebaseFirestore.getInstance().collection("users").document(user.toString())
+                                        .collection("utilites")
                                         .add(itens)
                                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                             @Override
