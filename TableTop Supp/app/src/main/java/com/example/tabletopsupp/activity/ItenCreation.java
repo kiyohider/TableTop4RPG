@@ -86,7 +86,7 @@ public class ItenCreation extends AppCompatActivity {
     }
 
     private void saveUserStore(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String filename = itemName.getText().toString();
         final StorageReference reference = FirebaseStorage.getInstance().getReference("/"+user+"/"+ filename);
         reference.putFile(selectedUri)
@@ -106,7 +106,7 @@ public class ItenCreation extends AppCompatActivity {
                                 ItensMaster itens = new ItensMaster(itemname,itemdescription,imageUrl,Weight);
 
 
-                                FirebaseFirestore.getInstance().collection("users").document(user.toString())
+                                FirebaseFirestore.getInstance().collection("users").document(user)
                                         .collection("utilites")
                                         .add(itens)
                                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -134,6 +134,8 @@ public class ItenCreation extends AppCompatActivity {
 
     public void uploadItem(View view) {
         saveUserStore();
+        Intent intent = new Intent(getApplicationContext(),GameMasterNavigation.class);
+        startActivity(intent);
 
     }
 
