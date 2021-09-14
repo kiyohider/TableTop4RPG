@@ -73,6 +73,9 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:background="@color/my_primary_color"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:editable="false"
                 android:ems="10"
                 android:inputType="none"
                 android:textColor="@color/black" />
