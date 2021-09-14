@@ -1,6 +1,9 @@
 package com.example.tabletopsupp.model;
 
 import android.media.Image;
+import android.net.Uri;
+
+import java.net.URI;
 
 public class ItensMaster {
 

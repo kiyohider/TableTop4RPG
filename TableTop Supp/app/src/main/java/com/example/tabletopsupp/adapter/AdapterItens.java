@@ -12,15 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.model.ItensMaster;
 import com.example.tabletopsupp.model.TableMaster;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder> {
-    private List<ItensMaster> tablesList;
 
-    public AdapterItens(List<ItensMaster> tables) {
+public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder>{
+    private List<ItensMaster> tablesList;
+    private RecyclerViewClickListener listener;
+
+    public AdapterItens(List<ItensMaster> tables, RecyclerViewClickListener listener) {
 
         this.tablesList = tables;
+        this.listener = listener;
     }
 
     @Override
@@ -36,8 +40,9 @@ public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder
 
         ItensMaster itemsMaster = tablesList.get(position);
         holder.itemName.setText((itemsMaster.getItemName()));
-       // holder.itemImage.setImageResource(itemsMaster.getItemPhoto());
-
+        Picasso.get()
+                .load(itemsMaster.getItemPhoto())
+                .into(holder.itemImage);
     }
 
     @Override
@@ -46,11 +51,11 @@ public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder
         return tablesList.size();
     }
 
-    public  class MyViewHolder extends  RecyclerView.ViewHolder{
+
+    public  class MyViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView itemName;
         ImageView itemImage;
-
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -60,7 +65,19 @@ public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder
             itemName = itemView.findViewById(R.id.itemNameTxt);
             itemImage = itemView.findViewById(R.id.itemImage);
 
+            itemView.setOnClickListener(this);
+
         }
+
+        @Override
+        public void onClick(View v) {
+            listener.onClick(v, getAdapterPosition());
+        }
+
+    }
+
+    public  interface  RecyclerViewClickListener{
+        void onClick(View view, int position);
     }
 
 }

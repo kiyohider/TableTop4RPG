@@ -31,6 +31,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.UUID;
 
 public class ItenCreation extends AppCompatActivity {
@@ -135,8 +136,9 @@ public class ItenCreation extends AppCompatActivity {
     public void uploadItem(View view) {
         saveUserStore();
         Intent intent = new Intent(getApplicationContext(),GameMasterNavigation.class);
-        startActivity(intent);
 
+        startActivity(intent);
+        finish();
     }
 
 
