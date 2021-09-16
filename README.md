@@ -34,13 +34,21 @@ Desafios
 - Comunicação entre usuários no app
 
 requisitos:
+
 login com a conta google
+
 criar mesa de jogo
+
 escolher sistema de rpg que seja usado
+
 permitir criação de convite por QR code
+
 permitir criação de convite por link
+
 como jogador criar a ficha de acordo com as regras e sistema escolhido pelo mestre
+
 o mestre ter controle sobre as fichas dos jogadores para modificações necessárias
+
 atribuir experiência a ficha e considerar o avanço de level
 
 
