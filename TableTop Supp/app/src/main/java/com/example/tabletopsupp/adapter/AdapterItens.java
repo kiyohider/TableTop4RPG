@@ -43,6 +43,8 @@ public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder
         Picasso.get()
                 .load(itemsMaster.getItemPhoto())
                 .into(holder.itemImage);
+
+
     }
 
     @Override
@@ -50,6 +52,7 @@ public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder
 
         return tablesList.size();
     }
+
 
 
     public  class MyViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener{

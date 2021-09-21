@@ -31,8 +31,11 @@ public class GameMasterNavigation extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
+
         smartTabLayout = findViewById(R.id.viewPagerTab);
         viewPager = findViewById(R.id.viewPager);
+
+
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(),
@@ -45,6 +48,7 @@ public class GameMasterNavigation extends AppCompatActivity {
 
         viewPager.setAdapter(adapter);
         smartTabLayout.setViewPager(viewPager);
+
     }
     //back arrow button
     @Override

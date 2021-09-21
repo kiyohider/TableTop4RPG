@@ -53,8 +53,9 @@ public class UtilitiesFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerTablesItems);
 
         loadUtilities();
-        setAdapterItems();
         addItem();
+        setAdapterItems();
+
         return view;
     }
 
@@ -87,10 +88,8 @@ public class UtilitiesFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),ItenCreation.class);
                 startActivity(intent);
-
             }
         });
-
     }
 
     public void loadUtilities(){
@@ -114,39 +113,8 @@ public class UtilitiesFragment extends Fragment {
 
 
                         }
-
                     }
                 });
-
-
-
-
-
-               /* .addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                         @Override
-                                         public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                                             if (value.exists()) {
-                                                 String photo = value.getData().get("itemPhoto").toString();
-                                                 String name = value.getData().get("itemName").toString();
-                                                 String description = value.getData().get("itemDescription").toString();
-                                                 int weight = value.getData().get("itemWeigth").hashCode();
-                                                 makeItems(name, description, photo, weight);
-
-                                             }
-                                         }
-                                     */
-                       /* List<DocumentSnapshot> docs = value.getDocuments();
-                        for(int i = 0 ; i< docs.size();i++){
-                            Toast.makeText(getContext(), docs.get(i).get("itemPhoto").toString(), Toast.LENGTH_SHORT).show();
-                            Uri photo = Uri.parse(docs.get(i).get("itemPhoto").toString());
-                            String name = docs.get(i).get("itemName").toString();
-                            String description = docs.get(i).get("itemDescription").toString();
-                            int weight = docs.get(i).get("itemWeigth").hashCode();
-                            ItensMaster itemsMaster = new ItensMaster(name,description,photo,weight);
-                            tableList.add(itemsMaster);
-                        }
-                    }
-                });*/
     }
 
 

@@ -37,13 +37,19 @@ public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHold
         holder.masterName.setText(tableMaster.getmasterName());
         holder.number.setText(tableMaster.getPlayNumber());
         holder.systemName.setText(tableMaster.getSystemName());
-    }
 
+    }
+    public void clear() {
+        int size = tablesList.size();
+        tablesList.clear();
+        notifyItemRangeRemoved(0, size);
+    }
     @Override
     public int getItemCount() {
 
         return tablesList.size();
     }
+
 
     public  class MyViewHolder extends  RecyclerView.ViewHolder{
 

@@ -1,18 +1,30 @@
 package com.example.tabletopsupp.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tabletopsupp.R;
+import com.example.tabletopsupp.activity.ItenCreation;
+import com.example.tabletopsupp.adapter.AdapterItens;
 import com.example.tabletopsupp.adapter.AdapterTables;
+import com.example.tabletopsupp.model.ItensMaster;
 import com.example.tabletopsupp.model.TableMaster;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,40 +32,57 @@ import java.util.List;
 public class TablesFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<TableMaster> tableList = new ArrayList<>();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tables, container, false);
-
         recyclerView = view.findViewById(R.id.recyclerTablesGM);
 
-        this.makeTables();
+        loadUtilities();
+        setAdapterItems();
+        return view;
+    }
 
+    private void setAdapterItems() {
+        // setOnClickListener();
         AdapterTables adapterTables = new AdapterTables(tableList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapterTables);
-        return view;
     }
 
-    public void makeTables(){
-        TableMaster tables = new TableMaster("kiyohide", "zenodia", "5", "alahu");
-        this.tableList.add(tables);
+    public void loadUtilities() {
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseFirestore.getInstance().collection("users").document(user).collection("tables")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.e("teste", error.getMessage());
+                            return;
+                        }
+                        List<DocumentSnapshot> docs = value.getDocuments();
+                        for (int i = 0; i < docs.size(); i++) {
 
-        tables = new TableMaster("jao", "xitauri", "5", "alahu");
-        this.tableList.add(tables);
+                            String mName = docs.get(i).get("masterName").toString();
+                            String aName = docs.get(i).get("adventureName").toString();
+                            String numberPlay = docs.get(i).get("playNumber").toString();
+                            String system = docs.get(i).get("systemName").toString();
+                            makeItems(mName, aName, numberPlay, system);
 
-        tables = new TableMaster("jonne", "horda", "5", "alahu");
-        this.tableList.add(tables);
 
-        tables = new TableMaster("zed", "alliance", "5", "alahu");
-        this.tableList.add(tables);
+                        }
 
-        tables = new TableMaster("lola", "bicotinico", "5", "alahu");
-        this.tableList.add(tables);
-
+                    }
+                });
     }
 
+    public void makeItems(String mName, String aName, String numberPlay, String system) {
+
+        TableMaster tablesMaster = new TableMaster(mName, aName, numberPlay, system);
+        this.tableList.add(tablesMaster);
+    }
 }

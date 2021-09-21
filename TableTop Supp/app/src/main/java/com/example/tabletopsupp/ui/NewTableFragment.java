@@ -1,6 +1,8 @@
 package com.example.tabletopsupp.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,10 +21,17 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.tabletopsupp.R;
+import com.example.tabletopsupp.activity.GameMasterNavigation;
+import com.example.tabletopsupp.model.ItensMaster;
+import com.example.tabletopsupp.model.TableMaster;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,8 +39,6 @@ import java.util.Map;
 
 public class NewTableFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    public void question1from10() {
-    }
 
     private Spinner spinner;
     private String itemSelected;
@@ -75,33 +82,48 @@ public class NewTableFragment extends Fragment implements AdapterView.OnItemSele
 
     }
 
+    private void saveUserStore() {
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        String masterName = Mname.getText().toString();
+        String tableName = Aname.getText().toString();
+        String system = itemSelected;
+
+        TableMaster tableMaster = new TableMaster(masterName, tableName, "1", system);
+
+
+        FirebaseFirestore.getInstance().collection("users").document(user)
+                .collection("tables")
+                .add(tableMaster)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i("testeuri", e.getMessage());
+                    }
+                });
+
+
+    }
+
+
+
     public void AddData() {
 
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String sucesso = "succes", falha = "failure";
-                Map<String, Object> user = new HashMap<>();
-                user.put("masterName", Mname.getText());
-                user.put("adventureName", Aname.getText());
-                user.put("system", itemSelected);
+                saveUserStore();
+                Intent intent = new Intent(getContext(), GameMasterNavigation.class);
+                String masterName = "";
+                String tableName = "";
 
-// Add a new document with a generated ID
-                db.collection("user")
-                        .add(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(sucesso, "DocumentSnapshot added with ID: " + documentReference.getId());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(falha, "Error adding document", e);
-                            }
-                        });
 
             }
         });
