@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.model.ItensMaster;
-import com.example.tabletopsupp.model.TableMaster;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -30,7 +29,7 @@ public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemTableList = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.text_itens, parent, false);
+                .inflate(R.layout.model_itens, parent, false);
 
         return new MyViewHolder(itemTableList);
     }

@@ -14,7 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tabletopsupp.R;
+import com.example.tabletopsupp.activity.ItemPage;
 import com.example.tabletopsupp.activity.ItenCreation;
+import com.example.tabletopsupp.activity.Table_Navigation;
 import com.example.tabletopsupp.adapter.AdapterItens;
 import com.example.tabletopsupp.adapter.AdapterTables;
 import com.example.tabletopsupp.model.ItensMaster;
@@ -32,6 +34,7 @@ import java.util.List;
 public class TablesFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<TableMaster> tableList = new ArrayList<>();
+    private AdapterTables.RecyclerViewClickListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,13 +48,23 @@ public class TablesFragment extends Fragment {
     }
 
     private void setAdapterItems() {
-        // setOnClickListener();
-        AdapterTables adapterTables = new AdapterTables(tableList);
-
+        setOnClickListener();
+        AdapterTables adapterTables = new AdapterTables(tableList,listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapterTables);
+    }
+
+    private void setOnClickListener() {
+        listener = new AdapterTables.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(getContext(), Table_Navigation.class);
+                intent.putExtra("name",tableList.get(position).getAdventureName());
+                startActivity(intent);
+            }
+        };
     }
 
     public void loadUtilities() {

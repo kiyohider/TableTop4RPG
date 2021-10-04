@@ -94,10 +94,11 @@ public class NewTableFragment extends Fragment implements AdapterView.OnItemSele
 
         FirebaseFirestore.getInstance().collection("users").document(user)
                 .collection("tables")
-                .add(tableMaster)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                .document(tableName)
+                .set(tableMaster)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
+                    public void onSuccess(Void aVoid) {
 
                     }
                 })
@@ -121,10 +122,9 @@ public class NewTableFragment extends Fragment implements AdapterView.OnItemSele
             public void onClick(View v) {
                 saveUserStore();
                 Intent intent = new Intent(getContext(), GameMasterNavigation.class);
-                String masterName = "";
-                String tableName = "";
-
-
+                String empty = "";
+                Mname.setText(empty);
+                Aname.setText(empty);
             }
         });
 

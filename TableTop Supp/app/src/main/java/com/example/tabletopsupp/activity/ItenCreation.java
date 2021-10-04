@@ -89,6 +89,7 @@ public class ItenCreation extends AppCompatActivity {
     private void saveUserStore(){
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String filename = itemName.getText().toString();
+
         final StorageReference reference = FirebaseStorage.getInstance().getReference("/"+user+"/"+ filename);
         reference.putFile(selectedUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -109,10 +110,11 @@ public class ItenCreation extends AppCompatActivity {
 
                                 FirebaseFirestore.getInstance().collection("users").document(user)
                                         .collection("utilites")
-                                        .add(itens)
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        .document(itemname)
+                                        .set(itens)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
-                                            public void onSuccess(DocumentReference documentReference) {
+                                            public void onSuccess(Void aVoid) {
 
                                             }
                                         })

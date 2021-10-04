@@ -15,16 +15,18 @@ import java.util.List;
 
 public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHolder> {
     private List<TableMaster> tablesList;
+    private RecyclerViewClickListener listener;
 
-    public AdapterTables(List<TableMaster> tables) {
+    public AdapterTables(List<TableMaster> tables, RecyclerViewClickListener listener) {
 
         this.tablesList = tables;
+        this.listener = listener;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemTableList = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.text_tables, parent, false);
+                .inflate(R.layout.model_tables, parent, false);
 
         return new MyViewHolder(itemTableList);
     }
@@ -39,11 +41,7 @@ public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHold
         holder.systemName.setText(tableMaster.getSystemName());
 
     }
-    public void clear() {
-        int size = tablesList.size();
-        tablesList.clear();
-        notifyItemRangeRemoved(0, size);
-    }
+
     @Override
     public int getItemCount() {
 
@@ -51,7 +49,8 @@ public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHold
     }
 
 
-    public  class MyViewHolder extends  RecyclerView.ViewHolder{
+
+    public  class MyViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tableName;
         TextView masterName;
@@ -59,15 +58,25 @@ public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHold
         TextView systemName;
 
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View tableView) {
 
-            super(itemView);
+            super(tableView);
 
-            tableName = itemView.findViewById(R.id.adventureNameTxt);
-            masterName = itemView.findViewById(R.id.masterNameTxt);
-            number = itemView.findViewById(R.id.playNumberTxt);
-            systemName = itemView.findViewById(R.id.systemNameTxt);
+            tableName = tableView.findViewById(R.id.adventureNameTxt);
+            masterName = tableView.findViewById(R.id.masterNameTxt);
+            number = tableView.findViewById(R.id.playNumberTxt);
+            systemName = tableView.findViewById(R.id.systemNameTxt);
+            tableView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            listener.onClick(v, getAdapterPosition());
+        }
+
+    }
+    public interface RecyclerViewClickListener {
+        void onClick(View view, int position);
     }
 
 }
