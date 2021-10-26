@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.activity.ItemPage;
@@ -62,14 +63,40 @@ public class TablesFragment extends Fragment {
             public void onClick(View view, int position) {
                 Intent intent = new Intent(getContext(), Table_Navigation.class);
                 intent.putExtra("name",tableList.get(position).getAdventureName());
+
                 startActivity(intent);
             }
         };
     }
 
-    public void loadUtilities() {
+    /*public void loadUtilities() {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseFirestore.getInstance().collection("users").document(user).collection("tables")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.e("teste", error.getMessage());
+                            return;
+                        }
+                        List<DocumentSnapshot> docs = value.getDocuments();
+                        for (int i = 0; i < docs.size(); i++) {
+
+                            String mName = docs.get(i).get("masterName").toString();
+                            String aName = docs.get(i).get("adventureName").toString();
+                            String numberPlay = docs.get(i).get("playNumber").toString();
+                            String system = docs.get(i).get("systemName").toString();
+                            makeItems(mName, aName, numberPlay, system);
+
+
+                        }
+
+                    }
+                });
+    }*/
+    public void loadUtilities() {
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseFirestore.getInstance().collection("tables").whereEqualTo("master", user)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {

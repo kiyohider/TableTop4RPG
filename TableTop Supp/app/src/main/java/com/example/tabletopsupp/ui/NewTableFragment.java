@@ -89,11 +89,10 @@ public class NewTableFragment extends Fragment implements AdapterView.OnItemSele
         String tableName = Aname.getText().toString();
         String system = itemSelected;
 
-        TableMaster tableMaster = new TableMaster(masterName, tableName, "1", system);
+        TableMaster tableMaster = new TableMaster(masterName, tableName, "1", system, user);
 
 
-        FirebaseFirestore.getInstance().collection("users").document(user)
-                .collection("tables")
+        FirebaseFirestore.getInstance().collection("tables")
                 .document(tableName)
                 .set(tableMaster)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

@@ -40,6 +40,7 @@ public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHold
         holder.number.setText(tableMaster.getPlayNumber());
         holder.systemName.setText(tableMaster.getSystemName());
 
+
     }
 
     @Override

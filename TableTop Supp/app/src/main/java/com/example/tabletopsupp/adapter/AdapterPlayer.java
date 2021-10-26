@@ -80,6 +80,7 @@ public class AdapterPlayer extends RecyclerView.Adapter<AdapterPlayer.MyViewHold
             listener.onClick(v, getAdapterPosition());
         }
 
+
     }
 
     public  interface  RecyclerViewClickListener{

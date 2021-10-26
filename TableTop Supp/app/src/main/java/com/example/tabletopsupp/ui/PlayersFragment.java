@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.activity.ItemPage;
@@ -37,7 +38,7 @@ public class PlayersFragment extends Fragment {
     private AdapterPlayer.RecyclerViewClickListener listener;
     private List<PlayersMaster> playersList = new ArrayList<>();
     private FloatingActionButton floatingActionButton;
-
+    private String Document = "";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,8 +46,14 @@ public class PlayersFragment extends Fragment {
         floatingActionButton = view.findViewById(R.id.addPlayer);
         recyclerView = view.findViewById(R.id.recyclerTablesPlayers);
 
+
+        Bundle extras = getActivity().getIntent().getExtras();
+        if (extras != null){
+            Document = extras.getString("name");
+        }
+
         loadUtilities();
-        addItem();
+        addPlayer();
         setAdapterItems();
 
         return view;
@@ -75,18 +82,14 @@ public class PlayersFragment extends Fragment {
         };
     }*/
 
-    public void addItem() {
+    public void addPlayer() {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String document = "";
-                Bundle extras = getActivity().getIntent().getExtras();
-                if (extras != null){
-                    document = extras.getString("name");
-                }
+
 
                 Intent intent = new Intent(getContext(), ItenCreation.class);
-                intent.putExtra("name",document);
+                intent.putExtra("name",Document);
                 startActivity(intent);
 
             }
@@ -94,13 +97,9 @@ public class PlayersFragment extends Fragment {
     }
 
     public void loadUtilities(){
-        String document = "";
-        Bundle extras = getActivity().getIntent().getExtras();
-        if (extras != null){
-            document = extras.getString("name");
-        }
+
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseFirestore.getInstance().collection("users").document(user).collection("tables").document(document).collection("players")
+        FirebaseFirestore.getInstance().collection("users").document(user).collection("tables").document(Document).collection("players")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -114,7 +113,7 @@ public class PlayersFragment extends Fragment {
                             String pName = docs.get(i).get("playerName").toString();
                             String pRace = docs.get(i).get("playerRace").toString();
                             String pClass = docs.get(i).get("playerClass").toString();
-                            int pLevel = docs.get(i).get("playerLevel").hashCode();
+                            String pLevel = docs.get(i).get("playerLevel").toString();
 
                             makeItems(pName, pRace, pClass, pLevel);
 
@@ -126,7 +125,7 @@ public class PlayersFragment extends Fragment {
     }
 
 
-    public void makeItems(String name, String race, String Class, int level) {
+    public void makeItems(String name, String race, String Class, String level) {
 
         PlayersMaster playersMaster = new PlayersMaster(name, race, Class, level);
         this.playersList.add(playersMaster);

@@ -4,12 +4,12 @@ public class PlayersMaster {
     private  String playerName;
     private  String playerRace;
     private String playerClass;
-    private  int playerLevel;
+    private  String playerLevel;
 
     public PlayersMaster(){
 
     }
-    public PlayersMaster(String playerName, String playerRace, String playerClass, int playerLevel) {
+    public PlayersMaster(String playerName, String playerRace, String playerClass, String playerLevel) {
         this.playerName = playerName;
         this.playerRace = playerRace;
         this.playerClass = playerClass;
@@ -40,11 +40,11 @@ public class PlayersMaster {
         this.playerClass = playerClass;
     }
 
-    public int getPlayerLevel() {
+    public String getPlayerLevel() {
         return playerLevel;
     }
 
-    public void setPlayerLevel(int playerLevel) {
+    public void setPlayerLevel(String playerLevel) {
         this.playerLevel = playerLevel;
     }
 }

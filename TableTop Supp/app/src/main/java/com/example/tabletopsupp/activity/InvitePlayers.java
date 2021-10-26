@@ -34,7 +34,7 @@ public class InvitePlayers extends AppCompatActivity {
                 .setLink(Uri.parse("https://www.example.com/"+document))
                 .setDomainUriPrefix("https://tabletopsupp.page.link")
                 .setAndroidParameters (
-                        new DynamicLink.AndroidParameters.Builder ("com.example.android")
+                        new DynamicLink.AndroidParameters.Builder ()
                                 .setMinimumVersion (125)
                                 .build ())
                 .buildShortDynamicLink()
