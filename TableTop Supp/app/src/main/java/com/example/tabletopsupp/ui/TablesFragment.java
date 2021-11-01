@@ -17,11 +17,13 @@ import android.widget.Toast;
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.activity.ItemPage;
 import com.example.tabletopsupp.activity.ItenCreation;
+import com.example.tabletopsupp.activity.NewTable;
 import com.example.tabletopsupp.activity.Table_Navigation;
 import com.example.tabletopsupp.adapter.AdapterItens;
 import com.example.tabletopsupp.adapter.AdapterTables;
 import com.example.tabletopsupp.model.ItensMaster;
 import com.example.tabletopsupp.model.TableMaster;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -36,14 +38,17 @@ public class TablesFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<TableMaster> tableList = new ArrayList<>();
     private AdapterTables.RecyclerViewClickListener listener;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tables, container, false);
         recyclerView = view.findViewById(R.id.recyclerTablesGM);
+        floatingActionButton = view.findViewById(R.id.addTable);
 
         loadUtilities();
+        addItem();
         setAdapterItems();
         return view;
     }
@@ -55,6 +60,15 @@ public class TablesFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapterTables);
+    }
+    public void addItem() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), NewTable.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setOnClickListener() {
@@ -69,31 +83,6 @@ public class TablesFragment extends Fragment {
         };
     }
 
-    /*public void loadUtilities() {
-        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseFirestore.getInstance().collection("users").document(user).collection("tables")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            Log.e("teste", error.getMessage());
-                            return;
-                        }
-                        List<DocumentSnapshot> docs = value.getDocuments();
-                        for (int i = 0; i < docs.size(); i++) {
-
-                            String mName = docs.get(i).get("masterName").toString();
-                            String aName = docs.get(i).get("adventureName").toString();
-                            String numberPlay = docs.get(i).get("playNumber").toString();
-                            String system = docs.get(i).get("systemName").toString();
-                            makeItems(mName, aName, numberPlay, system);
-
-
-                        }
-
-                    }
-                });
-    }*/
     public void loadUtilities() {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseFirestore.getInstance().collection("tables").whereEqualTo("master", user)

@@ -42,7 +42,6 @@ public class GameMasterNavigation extends AppCompatActivity {
                 FragmentPagerItems.with(this)
                         .add("Tables", TablesFragment.class)
                         .add("Utilities", UtilitiesFragment.class)
-                        .add("New Table", NewTableFragment.class)
                         .create()
         );
 

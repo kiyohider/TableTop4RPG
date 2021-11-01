@@ -53,6 +53,7 @@ public class UtilitiesFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerTablesItems);
 
         loadUtilities();
+
         addItem();
         setAdapterItems();
 
@@ -88,6 +89,7 @@ public class UtilitiesFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),ItenCreation.class);
                 startActivity(intent);
+
             }
         });
     }

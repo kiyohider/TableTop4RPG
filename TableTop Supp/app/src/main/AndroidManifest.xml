@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TableTopSupp">
-        <activity android:name=".activity.InvitePlayers"></activity>
+        <activity android:name=".activity.NewTable"></activity>
+        <activity android:name=".activity.InvitePlayers" />
         <activity android:name=".activity.Table_Navigation" />
         <activity android:name=".activity.ItemPage" />
         <activity android:name=".activity.ItenCreation" />
