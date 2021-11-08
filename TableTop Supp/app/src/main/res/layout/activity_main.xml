@@ -42,7 +42,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TableTopSupps"
+        android:text="TableTop4RPG"
         android:textColor="@color/my_primary_color"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
