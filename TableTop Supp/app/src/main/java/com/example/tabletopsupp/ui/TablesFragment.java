@@ -77,7 +77,6 @@ public class TablesFragment extends Fragment {
             public void onClick(View view, int position) {
                 Intent intent = new Intent(getContext(), Table_Navigation.class);
                 intent.putExtra("name",tableList.get(position).getAdventureName());
-
                 startActivity(intent);
             }
         };

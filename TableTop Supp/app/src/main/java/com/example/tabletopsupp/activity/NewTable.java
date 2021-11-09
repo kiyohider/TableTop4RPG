@@ -101,6 +101,7 @@ public class NewTable extends AppCompatActivity implements AdapterView.OnItemSel
                 saveUserStore();
                 Intent intent = new Intent(getApplicationContext(), GameMasterNavigation.class);
                 startActivity(intent);
+                finish();
             }
         });
 

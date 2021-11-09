@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.tabletopsupp.R;
+import com.example.tabletopsupp.activity.InvitePlayers;
 import com.example.tabletopsupp.activity.ItemPage;
 import com.example.tabletopsupp.activity.ItenCreation;
 import com.example.tabletopsupp.adapter.AdapterItens;
@@ -88,7 +89,7 @@ public class PlayersFragment extends Fragment {
             public void onClick(View v) {
 
 
-                Intent intent = new Intent(getContext(), ItenCreation.class);
+                Intent intent = new Intent(getContext(), InvitePlayers.class);
                 intent.putExtra("name",Document);
                 startActivity(intent);
 
@@ -99,7 +100,7 @@ public class PlayersFragment extends Fragment {
     public void loadUtilities(){
 
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseFirestore.getInstance().collection("users").document(user).collection("tables").document(Document).collection("players")
+        FirebaseFirestore.getInstance().collection("tables").document(Document).collection("players")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -132,4 +133,8 @@ public class PlayersFragment extends Fragment {
 
 
     }
+
+
+
+
 }
