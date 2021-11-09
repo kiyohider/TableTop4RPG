@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,36 +25,35 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class NoteCreation extends AppCompatActivity {
-
+    private  String document = "";
     private EditText tittle, body;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_creation);
 
-        tittle = findViewById(R.id.noteHead);
-        body = findViewById(R.id.noteBody);
-
-    }
-    private void saveUserStore() {
-        String document = "";
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             document = extras.getString("name");
         }
+
+        tittle = findViewById(R.id.noteHead);
+        body = findViewById(R.id.noteBody);
+    }
+    private void saveUserStore() {
         String noteName = tittle.getText().toString();
         String noteText = body.getText().toString();
 
-
         NotesMaster notesMaster = new NotesMaster(noteName, noteText);
 
-
-        FirebaseFirestore.getInstance().collection("tables").document(document).collection("notes").document(noteName)
+        db.collection("tables").document(document)
+                .collection("notes").document(noteName)
                 .set(notesMaster)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -62,13 +62,23 @@ public class NoteCreation extends AppCompatActivity {
                         Log.i("testeuri", e.getMessage());
                     }
                 });
-
-
     }
+
     public void uploadNote(View view) {
         saveUserStore();
-        //Intent intent = new Intent(getApplicationContext(),GameMasterNavigation.class);
-        //startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), Table_Navigation.class);
+        intent.putExtra("name",document);
+        startActivity(intent);
         finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

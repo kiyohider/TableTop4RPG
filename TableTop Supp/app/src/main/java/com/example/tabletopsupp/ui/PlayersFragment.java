@@ -12,15 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.activity.InvitePlayers;
-import com.example.tabletopsupp.activity.ItemPage;
-import com.example.tabletopsupp.activity.ItenCreation;
-import com.example.tabletopsupp.adapter.AdapterItens;
 import com.example.tabletopsupp.adapter.AdapterPlayer;
-import com.example.tabletopsupp.model.ItensMaster;
 import com.example.tabletopsupp.model.PlayersMaster;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,20 +28,20 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class PlayersFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterPlayer.RecyclerViewClickListener listener;
     private List<PlayersMaster> playersList = new ArrayList<>();
     private FloatingActionButton floatingActionButton;
     private String Document = "";
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_players, container, false);
         floatingActionButton = view.findViewById(R.id.addPlayer);
         recyclerView = view.findViewById(R.id.recyclerTablesPlayers);
-
 
         Bundle extras = getActivity().getIntent().getExtras();
         if (extras != null){
@@ -60,8 +55,48 @@ public class PlayersFragment extends Fragment {
         return view;
     }
 
+    public void loadUtilities(){
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        db.collection("tables").document(Document).collection("players")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.e("teste", error.getMessage());
+                            return;
+                        }
+                        List<DocumentSnapshot> docs = value.getDocuments();
+                        for (int i = 0; i < docs.size(); i++) {
+                            String pName = docs.get(i).get("playerName").toString();
+                            String pRace = docs.get(i).get("playerRace").toString();
+                            String pClass = docs.get(i).get("playerClass").toString();
+                            String pLevel = docs.get(i).get("playerLevel").toString();
+
+                            makeItems(pName, pRace, pClass, pLevel);
+                        }
+                    }
+                });
+    }
+
+    public void makeItems(String name, String race, String Class, String level) {
+        PlayersMaster playersMaster = new PlayersMaster(name, race, Class, level);
+        this.playersList.add(playersMaster);
+    }
+
+    public void addPlayer() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), InvitePlayers.class);
+                intent.putExtra("name",Document);
+                startActivity(intent);
+            }
+        });
+    }
+
     private void setAdapterItems() {
-       // setOnClickListener();
+        // setOnClickListener();
         AdapterPlayer adapterPlayer = new AdapterPlayer(playersList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -82,59 +117,4 @@ public class PlayersFragment extends Fragment {
             }
         };
     }*/
-
-    public void addPlayer() {
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                Intent intent = new Intent(getContext(), InvitePlayers.class);
-                intent.putExtra("name",Document);
-                startActivity(intent);
-
-            }
-        });
-    }
-
-    public void loadUtilities(){
-
-        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseFirestore.getInstance().collection("tables").document(Document).collection("players")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            Log.e("teste", error.getMessage());
-                            return;
-                        }
-                        List<DocumentSnapshot> docs = value.getDocuments();
-                        for (int i = 0; i < docs.size(); i++) {
-
-                            String pName = docs.get(i).get("playerName").toString();
-                            String pRace = docs.get(i).get("playerRace").toString();
-                            String pClass = docs.get(i).get("playerClass").toString();
-                            String pLevel = docs.get(i).get("playerLevel").toString();
-
-                            makeItems(pName, pRace, pClass, pLevel);
-
-
-                        }
-
-                    }
-                });
-    }
-
-
-    public void makeItems(String name, String race, String Class, String level) {
-
-        PlayersMaster playersMaster = new PlayersMaster(name, race, Class, level);
-        this.playersList.add(playersMaster);
-
-
-    }
-
-
-
-
 }

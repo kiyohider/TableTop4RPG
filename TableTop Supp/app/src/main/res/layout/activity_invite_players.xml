@@ -51,10 +51,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/my_primary_color"
+                android:ems="10"
+                android:inputType="none"
+                android:layout_gravity="center"
                 android:clickable="false"
                 android:contextClickable="false"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:editable="false"
+                />
 
             <TextView
                 android:id="@+id/textView16"
@@ -71,10 +74,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@color/my_primary_color"
+                android:ems="10"
+                android:inputType="none"
+                android:layout_gravity="center"
                 android:clickable="false"
                 android:contextClickable="false"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:editable="false"
+                />
 
             <Button
                 android:id="@+id/button5"

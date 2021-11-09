@@ -7,8 +7,8 @@ public class PlayersMaster {
     private  String playerLevel;
 
     public PlayersMaster(){
-
     }
+
     public PlayersMaster(String playerName, String playerRace, String playerClass, String playerLevel) {
         this.playerName = playerName;
         this.playerRace = playerRace;

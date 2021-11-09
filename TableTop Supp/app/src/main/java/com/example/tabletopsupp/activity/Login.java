@@ -23,14 +23,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class Login extends AppCompatActivity {
-
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onStart() {
-
         super.onStart();
 
         FirebaseUser user = mAuth.getCurrentUser();
@@ -38,7 +36,6 @@ public class Login extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intent);
         }
-
     }
 
     @Override
@@ -46,7 +43,6 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-
         CreateRequest();
 
         findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
@@ -56,8 +52,6 @@ public class Login extends AppCompatActivity {
             }
 
         });
-
-
     }
 
     private void CreateRequest() {
@@ -78,8 +72,7 @@ public class Login extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        // Result returned from launching the Intent from GoogleSignInApi
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -110,7 +103,6 @@ public class Login extends AppCompatActivity {
                             // If sign in fails, display a message to the user.
 
                             Toast.makeText(Login.this, "Sorry auth fail", Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });

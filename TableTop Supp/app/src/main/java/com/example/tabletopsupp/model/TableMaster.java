@@ -8,23 +8,19 @@ public class TableMaster {
     private  String systemName;
     private   String master;
 
-
-
     public TableMaster(String masterName, String adventureName, String playNumber, String systemName, String master) {
         this.masterName = masterName;
         this.adventureName = adventureName;
         this.playNumber = playNumber;
         this.systemName = systemName;
         this.master = master;
-
     }
+
     public TableMaster(String masterName, String adventureName, String playNumber, String systemName) {
         this.masterName = masterName;
         this.adventureName = adventureName;
         this.playNumber = playNumber;
         this.systemName = systemName;
-
-
     }
 
     public String getmasterName() {

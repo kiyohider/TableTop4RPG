@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TableTopSupp</string>
+    <string name="app_name">TableTop4RPG</string>
     <string-array name="system">
         <item>Tormenta</item>
         <item>3DeT</item>

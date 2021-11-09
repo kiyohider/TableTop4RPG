@@ -14,13 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tabletopsupp.R;
-import com.example.tabletopsupp.activity.InvitePlayers;
+import com.example.tabletopsupp.activity.NoteCreation;
+import com.example.tabletopsupp.activity.Table_Navigation;
 import com.example.tabletopsupp.adapter.AdapterNotes;
-import com.example.tabletopsupp.adapter.AdapterPlayer;
+import com.example.tabletopsupp.adapter.AdapterTables;
 import com.example.tabletopsupp.model.NotesMaster;
-import com.example.tabletopsupp.model.PlayersMaster;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -30,13 +30,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class StoryFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterNotes.RecyclerViewClickListener listener;
     private List<NotesMaster> notesList = new ArrayList<>();
     private FloatingActionButton floatingActionButton;
     private String Document = "";
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +46,12 @@ public class StoryFragment extends Fragment {
         floatingActionButton = view.findViewById(R.id.addNote);
         recyclerView = view.findViewById(R.id.recyclerTablesNotes);
 
-        //loadUtilities();
+        Bundle extras = getActivity().getIntent().getExtras();
+        if (extras != null){
+            Document = extras.getString("name");
+        }
+
+        loadUtilities();
         addNotes();
         setAdapterItems();
 
@@ -54,8 +59,7 @@ public class StoryFragment extends Fragment {
     }
 
     public void loadUtilities(){
-
-        FirebaseFirestore.getInstance().collection("tables").document(Document).collection("notes")
+        db.collection("tables").document(Document).collection("notes")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -65,34 +69,26 @@ public class StoryFragment extends Fragment {
                         }
                         List<DocumentSnapshot> docs = value.getDocuments();
                         for (int i = 0;i< docs.size();i++){
-
-                            String tittle = docs.get(i).get("noteHead").toString();
-                            String body = docs.get(i).get("itemBody").toString();
+                            String tittle = docs.get(i).get("noteName").toString();
+                            String body = docs.get(i).get("noteText").toString();
                             makeNotes(tittle, body);
-
-
                         }
                     }
                 });
     }
 
-
     public void makeNotes(String name, String text) {
-
         NotesMaster noteMaster = new NotesMaster(name,text);
         this.notesList.add(noteMaster);
-
-
     }
 
     public void addNotes() {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), InvitePlayers.class);
+                Intent intent = new Intent(getContext(), NoteCreation.class);
                 intent.putExtra("name",Document);
                 startActivity(intent);
-
             }
         });
     }
@@ -106,6 +102,16 @@ public class StoryFragment extends Fragment {
         recyclerView.setAdapter(adapterNotes);
     }
 
-
-
+    /*
+    private void setOnClickListener() {
+        listener = new AdapterTables.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(getContext(), Table_Navigation.class);
+                intent.putExtra("name",tableList.get(position).getAdventureName());
+                startActivity(intent);
+            }
+        };
+    }
+    */
 }

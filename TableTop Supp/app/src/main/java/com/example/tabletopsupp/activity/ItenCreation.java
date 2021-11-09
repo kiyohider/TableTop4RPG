@@ -1,6 +1,6 @@
 package com.example.tabletopsupp.activity;
 
-import androidx.activity.result.contract.ActivityResultContracts;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,26 +20,24 @@ import android.widget.ImageView;
 
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.model.ItensMaster;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
-import java.net.URI;
-import java.util.UUID;
 
 public class ItenCreation extends AppCompatActivity {
-
     private ImageView imageItem;
-    private Button btnImageItem, btnCreateItem;
+    private Button btnImageItem;
     private Uri selectedUri;
     private EditText itemName, itemDescription,weight;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +45,6 @@ public class ItenCreation extends AppCompatActivity {
 
         imageItem = findViewById(R.id.imageItem);
         btnImageItem = findViewById(R.id.btnItemImage);
-        btnCreateItem = findViewById(R.id.addNewItem);
         itemName = findViewById(R.id.editItemName);
         itemDescription = findViewById(R.id.editItemDescription);
         weight = findViewById(R.id.editWeightItem);
@@ -57,7 +54,6 @@ public class ItenCreation extends AppCompatActivity {
                 selectPhoto();
             }
         });
-
     }
 
     @Override
@@ -65,7 +61,6 @@ public class ItenCreation extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == 0){
-
             selectedUri = data.getData();
             Bitmap bitmap = null;
             try {
@@ -76,21 +71,20 @@ public class ItenCreation extends AppCompatActivity {
             catch (IOException e){
             }
         }
-
     }
 
     public void selectPhoto(){
        Intent intent = new Intent(Intent.ACTION_PICK);
        intent.setType("image/+");
        startActivityForResult(intent,0);
-
     }
 
     private void saveUserStore(){
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String filename = itemName.getText().toString();
+        final StorageReference reference = FirebaseStorage.getInstance()
+                .getReference("/"+user+"/"+ filename);
 
-        final StorageReference reference = FirebaseStorage.getInstance().getReference("/"+user+"/"+ filename);
         reference.putFile(selectedUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -98,8 +92,6 @@ public class ItenCreation extends AppCompatActivity {
                         reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                Log.i("testeuri",uri.toString());
-
                                 String itemdescription = itemDescription.getText().toString();
                                 String itemname = itemName.getText().toString();
                                 String imageUrl = uri.toString();
@@ -107,15 +99,14 @@ public class ItenCreation extends AppCompatActivity {
 
                                 ItensMaster itens = new ItensMaster(itemname,itemdescription,imageUrl,Weight);
 
-
-                                FirebaseFirestore.getInstance().collection("users").document(user)
+                                db.collection("users")
+                                        .document(user)
                                         .collection("utilites")
                                         .document(itemname)
                                         .set(itens)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
@@ -138,11 +129,9 @@ public class ItenCreation extends AppCompatActivity {
     public void uploadItem(View view) {
         saveUserStore();
         Intent intent = new Intent(getApplicationContext(),GameMasterNavigation.class);
-
         startActivity(intent);
         finish();
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

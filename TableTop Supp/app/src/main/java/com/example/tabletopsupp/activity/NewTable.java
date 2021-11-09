@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,12 +22,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class NewTable extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
     private Spinner spinner;
     private String itemSelected;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private EditText Mname, Aname;
     private Button add;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,19 +46,15 @@ public class NewTable extends AppCompatActivity implements AdapterView.OnItemSel
         spinner.setOnItemSelectedListener(this);
 
         AddData();
-
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
         itemSelected = (String) parent.getItemAtPosition(position);
-
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     private void saveUserStore() {
@@ -69,14 +66,12 @@ public class NewTable extends AppCompatActivity implements AdapterView.OnItemSel
 
         TableMaster tableMaster = new TableMaster(masterName, tableName, "1", system, user);
 
-
-        FirebaseFirestore.getInstance().collection("tables")
+        db.collection("tables")
                 .document(tableName)
                 .set(tableMaster)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -85,16 +80,9 @@ public class NewTable extends AppCompatActivity implements AdapterView.OnItemSel
                         Log.i("testeuri", e.getMessage());
                     }
                 });
-
-
     }
 
-
-
-
     public void AddData() {
-
-
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +92,15 @@ public class NewTable extends AppCompatActivity implements AdapterView.OnItemSel
                 finish();
             }
         });
-
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

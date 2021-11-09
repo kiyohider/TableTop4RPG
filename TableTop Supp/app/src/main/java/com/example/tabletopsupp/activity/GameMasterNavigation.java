@@ -7,10 +7,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Spinner;
 
 import com.example.tabletopsupp.R;
-import com.example.tabletopsupp.ui.NewTableFragment;
 import com.example.tabletopsupp.ui.TablesFragment;
 import com.example.tabletopsupp.ui.UtilitiesFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -18,9 +16,9 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
 public class GameMasterNavigation extends AppCompatActivity {
-    private Spinner spinner;
     private SmartTabLayout smartTabLayout;
     private ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +28,8 @@ public class GameMasterNavigation extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
-
         smartTabLayout = findViewById(R.id.viewPagerTab);
         viewPager = findViewById(R.id.viewPager);
-
-
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(),

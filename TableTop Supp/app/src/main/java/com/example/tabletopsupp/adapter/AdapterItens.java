@@ -36,50 +36,40 @@ public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         ItensMaster itemsMaster = tablesList.get(position);
         holder.itemName.setText((itemsMaster.getItemName()));
         Picasso.get()
                 .load(itemsMaster.getItemPhoto())
                 .into(holder.itemImage);
-
-
     }
 
     @Override
     public int getItemCount() {
-
         return tablesList.size();
     }
 
 
 
     public  class MyViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener{
-
         TextView itemName;
         ImageView itemImage;
 
-
         public MyViewHolder(@NonNull View itemView) {
-
             super(itemView);
 
             itemName = itemView.findViewById(R.id.itemNameTxt);
             itemImage = itemView.findViewById(R.id.itemImage);
 
             itemView.setOnClickListener(this);
-
         }
 
         @Override
         public void onClick(View v) {
             listener.onClick(v, getAdapterPosition());
         }
-
     }
 
     public  interface  RecyclerViewClickListener{
         void onClick(View view, int position);
     }
-
 }

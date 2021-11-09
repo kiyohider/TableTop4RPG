@@ -25,14 +25,11 @@ public class Table_Navigation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_page);
 
-        //get to config action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
         smartTabLayout = findViewById(R.id.viewPagerTabGM);
         viewPager = findViewById(R.id.viewPagerGM);
-
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(),
@@ -42,13 +39,10 @@ public class Table_Navigation extends AppCompatActivity {
                         .add("Battle", BattleFragment.class)
                         .create()
         );
-
         viewPager.setAdapter(adapter);
         smartTabLayout.setViewPager(viewPager);
-
     }
 
-    //back arrow button
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -58,5 +52,4 @@ public class Table_Navigation extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

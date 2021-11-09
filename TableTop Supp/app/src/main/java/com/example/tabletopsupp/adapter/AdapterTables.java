@@ -18,7 +18,6 @@ public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHold
     private RecyclerViewClickListener listener;
 
     public AdapterTables(List<TableMaster> tables, RecyclerViewClickListener listener) {
-
         this.tablesList = tables;
         this.listener = listener;
     }
@@ -33,34 +32,27 @@ public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         TableMaster tableMaster = tablesList.get(position);
         holder.tableName.setText(tableMaster.getAdventureName());
         holder.masterName.setText(tableMaster.getmasterName());
         holder.number.setText(tableMaster.getPlayNumber());
         holder.systemName.setText(tableMaster.getSystemName());
-
-
     }
 
     @Override
     public int getItemCount() {
-
         return tablesList.size();
     }
 
 
 
     public  class MyViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener {
-
         TextView tableName;
         TextView masterName;
         TextView number;
         TextView systemName;
 
-
         public MyViewHolder(@NonNull View tableView) {
-
             super(tableView);
 
             tableName = tableView.findViewById(R.id.adventureNameTxt);
@@ -69,15 +61,12 @@ public class AdapterTables extends RecyclerView.Adapter<AdapterTables.MyViewHold
             systemName = tableView.findViewById(R.id.systemNameTxt);
             tableView.setOnClickListener(this);
         }
-
         @Override
         public void onClick(View v) {
             listener.onClick(v, getAdapterPosition());
         }
-
     }
     public interface RecyclerViewClickListener {
         void onClick(View view, int position);
     }
-
 }

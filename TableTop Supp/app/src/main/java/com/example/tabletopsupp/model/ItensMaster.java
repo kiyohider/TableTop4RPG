@@ -1,10 +1,5 @@
 package com.example.tabletopsupp.model;
 
-import android.media.Image;
-import android.net.Uri;
-
-import java.net.URI;
-
 public class ItensMaster {
 
     private  String itemName;
@@ -13,8 +8,8 @@ public class ItensMaster {
     private  int itemWeigth;
 
     public ItensMaster(){
-
     }
+
     public ItensMaster(String itemName, String itemDescription, String itemPhoto, int itemWeigth) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
