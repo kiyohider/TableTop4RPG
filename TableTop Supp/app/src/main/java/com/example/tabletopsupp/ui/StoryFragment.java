@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.activity.NoteCreation;
+import com.example.tabletopsupp.activity.NotesPage;
 import com.example.tabletopsupp.activity.Table_Navigation;
 import com.example.tabletopsupp.adapter.AdapterNotes;
 import com.example.tabletopsupp.adapter.AdapterTables;
@@ -94,7 +95,7 @@ public class StoryFragment extends Fragment {
     }
 
     private void setAdapterItems() {
-        // setOnClickListener();
+        setOnClickListener();
         AdapterNotes adapterNotes = new AdapterNotes(notesList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -102,16 +103,15 @@ public class StoryFragment extends Fragment {
         recyclerView.setAdapter(adapterNotes);
     }
 
-    /*
     private void setOnClickListener() {
-        listener = new AdapterTables.RecyclerViewClickListener() {
+        listener = new AdapterNotes.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Intent intent = new Intent(getContext(), Table_Navigation.class);
-                intent.putExtra("name",tableList.get(position).getAdventureName());
+                Intent intent = new Intent(getContext(), NotesPage.class);
+                intent.putExtra("head",notesList.get(position).getnoteName());
+                intent.putExtra("body",notesList.get(position).getnoteText());
                 startActivity(intent);
             }
         };
     }
-    */
 }

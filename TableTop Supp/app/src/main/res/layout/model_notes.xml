@@ -25,7 +25,7 @@
             android:text="noteTxt"
 
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="36sp"
             android:textStyle="bold" />
     </LinearLayout>
 

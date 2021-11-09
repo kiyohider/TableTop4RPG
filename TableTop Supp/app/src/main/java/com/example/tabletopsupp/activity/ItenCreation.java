@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.model.ItensMaster;
 
+import com.example.tabletopsupp.ui.UtilitiesFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -128,8 +129,8 @@ public class ItenCreation extends AppCompatActivity {
 
     public void uploadItem(View view) {
         saveUserStore();
-        Intent intent = new Intent(getApplicationContext(),GameMasterNavigation.class);
-        startActivity(intent);
+     //   Intent intent = new Intent(getApplicationContext(),GameMasterNavigation.class);
+      //  startActivity(intent);
         finish();
     }
 

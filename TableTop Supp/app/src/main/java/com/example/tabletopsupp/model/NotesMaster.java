@@ -4,6 +4,9 @@ public class NotesMaster {
     private String noteName;
     private String noteText;
 
+    public NotesMaster(){
+    }
+
     public NotesMaster(String noteName) {
         this.noteName = noteName;
     }

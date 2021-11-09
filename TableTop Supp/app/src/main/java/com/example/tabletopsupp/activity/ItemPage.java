@@ -12,8 +12,8 @@ import com.example.tabletopsupp.R;
 import com.squareup.picasso.Picasso;
 
 public class ItemPage extends AppCompatActivity {
-    TextView tittleI , descriptionI , weigthI;
-    ImageView photoI;
+    private TextView tittleI , descriptionI , weigthI;
+    private ImageView photoI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

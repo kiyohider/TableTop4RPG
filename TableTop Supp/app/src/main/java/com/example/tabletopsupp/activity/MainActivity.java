@@ -8,18 +8,16 @@ import android.view.View;
 
 import com.example.tabletopsupp.R;
 
-
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-
     public void GameMasterPage(View view) {
         Intent intent = new Intent(getApplicationContext(),GameMasterNavigation.class);
         startActivity(intent);
     }
-
 }
