@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TableTopSupp">
-        <activity android:name=".activity.NotesPage"></activity>
+        <activity android:name=".activity.NewTableEnter"></activity>
+        <activity android:name=".activity.MainPlayer" />
+        <activity android:name=".activity.PlayerNavigation" />
+        <activity android:name=".activity.NotesPage" />
         <activity android:name=".activity.NoteCreation" />
         <activity android:name=".activity.NewTable" />
         <activity android:name=".activity.InvitePlayers" />

@@ -1,24 +1,18 @@
-package com.example.tabletopsupp.ui;
-
-import android.content.Intent;
-import android.os.Bundle;
+package com.example.tabletopsupp.activity;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.tabletopsupp.R;
-import com.example.tabletopsupp.activity.NewTable;
-import com.example.tabletopsupp.activity.Table_Navigation;
 import com.example.tabletopsupp.adapter.AdapterTables;
 import com.example.tabletopsupp.model.TableMaster;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,30 +24,30 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TablesFragment extends Fragment {
+public class MainPlayer extends AppCompatActivity {
+
     private RecyclerView recyclerView;
     private List<TableMaster> tableList = new ArrayList<>();
     private AdapterTables.RecyclerViewClickListener listener;
     private FloatingActionButton floatingActionButton;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tables, container, false);
-        recyclerView = view.findViewById(R.id.recyclerTablesGM);
-        floatingActionButton = view.findViewById(R.id.addTable);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_player);
+
+        recyclerView = findViewById(R.id.recyclerTablesP);
+        floatingActionButton = findViewById(R.id.enterTable);
 
         loadUtilities();
-        addItem();
+         addItem();
         setAdapterItems();
-        return view;
     }
 
     public void loadUtilities() {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        db.collection("tables").whereEqualTo("master", user).orderBy("adventureName")
+        db.collection("tables").whereEqualTo(user,user)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -72,7 +66,6 @@ public class TablesFragment extends Fragment {
                     }
                 });
     }
-
     public void makeItems(String mName, String aName, String numberPlay, String system) {
         TableMaster tablesMaster = new TableMaster(mName, aName, numberPlay, system);
         this.tableList.add(tablesMaster);
@@ -82,7 +75,7 @@ public class TablesFragment extends Fragment {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), NewTable.class);
+                Intent intent = new Intent(getApplicationContext(), NewTableEnter.class);
                 startActivity(intent);
             }
         });
@@ -91,7 +84,7 @@ public class TablesFragment extends Fragment {
     private void setAdapterItems() {
         setOnClickListener();
         AdapterTables adapterTables = new AdapterTables(tableList,listener);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapterTables);
@@ -101,10 +94,11 @@ public class TablesFragment extends Fragment {
         listener = new AdapterTables.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Intent intent = new Intent(getContext(), Table_Navigation.class);
+                Intent intent = new Intent(getApplicationContext(), Table_Navigation.class);
                 intent.putExtra("name",tableList.get(position).getAdventureName());
                 startActivity(intent);
             }
         };
     }
+
 }

@@ -20,4 +20,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),GameMasterNavigation.class);
         startActivity(intent);
     }
+
+    public void PlayerPage(View view) {
+        Intent intent = new Intent(getApplicationContext(),MainPlayer.class);
+        startActivity(intent);
+    }
 }
