@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.model.PlayersMaster;
+import com.example.tabletopsupp.playerCreation.CreationStep01;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -72,7 +74,12 @@ public class NewTableEnter extends AppCompatActivity {
                     }
                 });
 
+        Intent intent = new Intent(getApplicationContext(), CreationStep01.class);
+        intent.putExtra("adventure",adventure);
+        startActivity(intent);
+
         finish();
+
     }
 
 
