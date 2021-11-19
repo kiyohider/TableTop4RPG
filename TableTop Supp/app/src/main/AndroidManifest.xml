@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TableTopSupp">
-        <activity android:name=".playerCreation.CreationStep01"></activity>
+        <activity android:name=".playerCreation.CreationStep03"></activity>
+        <activity android:name=".playerCreation.CreationStep02" />
+        <activity android:name=".playerCreation.CreationStep01" />
         <activity android:name=".activity.NewTableEnter" />
         <activity android:name=".activity.MainPlayer" />
         <activity android:name=".activity.PlayerNavigation" />

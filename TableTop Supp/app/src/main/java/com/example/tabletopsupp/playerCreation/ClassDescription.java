@@ -1,8 +1,10 @@
 package com.example.tabletopsupp.playerCreation;
 
 public class ClassDescription {
-    public String guerreiro(){
-        String  guerreiro = "Características de classe\n" +
+    private int life;
+    private int mana;
+    public String warrior(){
+        String  warrior = "Características de classe\n" +
                 "Pontos de Vida: Um guerreiro começa com 20 pontos de vida (+ modificador de Constituição)" +
                 " e ganha 5 PV (+ mod. Con) por nível.\n" +
                 "Pontos de Mana: 3 PM por nível.\n" +
@@ -11,11 +13,26 @@ public class ClassDescription {
                 " Ofício (Int), Percepção (Sab), Pontaria (Des) e Reflexos (Des).\n" +
                 "Proficiências: Armas marciais, armaduras pesadas e escudos.";
 
-        return guerreiro;
+        return warrior;
 
     }
-    public String ladino(){
-        String  ladino = "Características de classe\n" +
+
+    public int lifeWarrior(int modConst){
+        int life = 20;
+         life += modConst ;
+
+        return life;
+    }
+
+    public int manaWarrior(int level){
+        int mana = 3;
+        mana = level*mana;
+
+        return mana;
+    }
+
+    public String rogue(){
+        String  rogue = "Características de classe\n" +
                 "Pontos de Vida: Você começa com 12 pontos de vida (+ modificador de Constituição) e" +
                 " ganha 3 PV (+ mod. Con) por nível.\n" +
                 "Pontos de Mana: 4 PM por nível.\n" +
@@ -25,11 +42,25 @@ public class ClassDescription {
                 " Jogatina (Car), Luta (For), Ofício (Int), Percepção (Sab), Pilotagem (Des) e Pontaria (Des).\n" +
                 "Proficiências: Nenhuma.";
 
-        return ladino;
-
+        return rogue;
     }
-    public String lutador(){
-        String  lutador = "Características de classe\n" +
+
+    public int lifeRogue(int modConst){
+        int life = 12;
+        life += modConst ;
+
+        return life;
+    }
+
+    public int manaRogue(int level){
+        int mana = 4;
+        mana = level*mana;
+
+        return mana;
+    }
+
+    public String fighter(){
+        String  fighter = "Características de classe\n" +
                 "Pontos de Vida: Você começa com 20 pontos de vida (+ modificador de Constituição) e" +
                 " ganha 5 PV (+ mod. Con) por nível.\n" +
                 "Pontos de Mana: 3 PM por nível.\n" +
@@ -38,7 +69,20 @@ public class ClassDescription {
                 " Intimidação (Car), Ofício (Int), Percepção (Sab), Pontaria (Des) e Reflexos (Des).\n" +
                 "Proficiências: Nenhuma.";
 
-        return lutador;
+        return fighter;
+    }
 
+    public int lifeFighter(int modConst){
+        int life = 20;
+        life += modConst ;
+
+        return life;
+    }
+
+    public int manaFighter(int level){
+        int mana = 3;
+        mana = level*mana;
+
+        return mana;
     }
 }

@@ -3,6 +3,7 @@ package com.example.tabletopsupp.playerCreation;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -106,15 +107,15 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
         String text = " ";
 
         if(itemSelectedC.equalsIgnoreCase("guerreiro")){
-            text = descriptionC.guerreiro();
+            text = descriptionC.warrior();
             descriptionClass.setText(text);
         }
         else if(itemSelectedC.equalsIgnoreCase("ladino")){
-            text = descriptionC.ladino();
+            text = descriptionC.rogue();
             descriptionClass.setText(text);
         }
         else{
-            text = descriptionC.lutador();
+            text = descriptionC.fighter();
             descriptionClass.setText(text);
         }
     }
@@ -128,25 +129,26 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             adventure = extras.getString("adventure");
-        }
 
-        db.collection("tables").document(adventure).collection("players")
+            db.collection("tables").document(adventure).collection("players")
                 .document(user).set(player).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
             }
-        })
+            })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.i("testeuri", e.getMessage());
                     }
                 });
-
-
-
-
-        finish();
-
+            Intent intent = new Intent(getApplicationContext(), CreationStep02.class);
+            intent.putExtra("adventure",adventure);
+            intent.putExtra("class",itemSelectedC);
+            intent.putExtra("race",itemSelectedR);
+            intent.putExtra("name",name);
+            startActivity(intent);
+            finish();
+        }
     }
 }
