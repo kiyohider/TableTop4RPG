@@ -3,6 +3,7 @@ package com.example.tabletopsupp.playerCreation;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,8 @@ public class CreationStep02 extends AppCompatActivity {
     private String infoClass, infoRace, name, adventure;
     private EditText strenght, dexterity, constitution, intelligence, wisdom, charisma;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private int skillClass = 0;
+    private int skillRace = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class CreationStep02 extends AppCompatActivity {
             infoClass = extras.getString("class");
             infoRace = extras.getString("race");
             name = extras.getString("name");
+            skillRace = extras.getInt("skillR");
+            skillClass = extras.getInt("skillC");
         }
     }
 
@@ -66,5 +71,15 @@ public class CreationStep02 extends AppCompatActivity {
                     }
                 });
 
+        int modInt = Integer.parseInt(intelligenceT) - 10;
+        if (modInt >0){
+            skillClass += modInt;
+
+            Intent intent = new Intent(getApplicationContext(), CreationStep03.class);
+            intent.putExtra("skills",skillRace);
+            intent.putExtra("skills",skillClass);
+            startActivity(intent);
+            finish();
+        }
     }
 }

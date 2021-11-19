@@ -28,6 +28,8 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
     ClassDescription descriptionC = new ClassDescription();
     private EditText descriptionRace, descriptionClass, characterN;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private int skillsClass = 0;
+    private  int skillsRace = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,14 +94,17 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
         if(itemSelectedR.equalsIgnoreCase("human")){
             text = descriptionR.human();
             descriptionRace.setText(text);
+            skillsRace = 2;
         }
         else if(itemSelectedR.equalsIgnoreCase("elf")){
             text = descriptionR.elf();
             descriptionRace.setText(text);
+
         }
         else{
             text = descriptionR.dwarf();
             descriptionRace.setText(text);
+
         }
     }
 
@@ -109,14 +114,17 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
         if(itemSelectedC.equalsIgnoreCase("guerreiro")){
             text = descriptionC.warrior();
             descriptionClass.setText(text);
+            skillsClass = 2;
         }
         else if(itemSelectedC.equalsIgnoreCase("ladino")){
             text = descriptionC.rogue();
             descriptionClass.setText(text);
+            skillsClass = 8;
         }
         else{
             text = descriptionC.fighter();
             descriptionClass.setText(text);
+            skillsClass = 4;
         }
     }
 
@@ -147,6 +155,9 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
             intent.putExtra("class",itemSelectedC);
             intent.putExtra("race",itemSelectedR);
             intent.putExtra("name",name);
+            intent.putExtra("skillC",skillsClass);
+            intent.putExtra("skillR",skillsRace);
+
             startActivity(intent);
             finish();
         }
