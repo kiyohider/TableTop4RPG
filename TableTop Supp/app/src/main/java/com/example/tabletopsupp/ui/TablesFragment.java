@@ -25,6 +25,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class TablesFragment extends Fragment {
     private AdapterTables.RecyclerViewClickListener listener;
     private FloatingActionButton floatingActionButton;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private Query query;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,15 +54,16 @@ public class TablesFragment extends Fragment {
 
     public void loadUtilities() {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        query = db.collection("tables").whereEqualTo("master", user).orderBy("adventureName");
 
-        db.collection("tables").whereEqualTo("master", user).orderBy("adventureName")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                query.addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                         if (error != null) {
                             Log.e("teste", error.getMessage());
                             return;
                         }
+
                         List<DocumentSnapshot> docs = value.getDocuments();
                         for (int i = 0; i < docs.size(); i++) {
                             String mName = docs.get(i).get("masterName").toString();
@@ -69,6 +72,8 @@ public class TablesFragment extends Fragment {
                             String system = docs.get(i).get("systemName").toString();
                             makeItems(mName, aName, numberPlay, system);
                         }
+
+                         
                     }
                 });
     }

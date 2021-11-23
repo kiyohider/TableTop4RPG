@@ -47,5 +47,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.google.firebase:firebase-dynamic-links'
-
+    implementation 'com.firebaseui:firebase-ui-firestore:8.0.0'
 }

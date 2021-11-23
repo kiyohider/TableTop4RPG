@@ -76,8 +76,17 @@ public class CreationStep02 extends AppCompatActivity {
             skillClass += modInt;
 
             Intent intent = new Intent(getApplicationContext(), CreationStep03.class);
-            intent.putExtra("skills",skillRace);
-            intent.putExtra("skills",skillClass);
+            intent.putExtra("skillsR",skillRace);
+            intent.putExtra("skillsC",skillClass);
+            intent.putExtra("classes",infoClass);
+            startActivity(intent);
+            finish();
+        }
+        else{
+            Intent intent = new Intent(getApplicationContext(), CreationStep03.class);
+            intent.putExtra("skillsR",skillRace);
+            intent.putExtra("skillsC",skillClass);
+            intent.putExtra("classes",infoClass);
             startActivity(intent);
             finish();
         }
