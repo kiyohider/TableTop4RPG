@@ -29,20 +29,18 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.List;
 
 public class NewTableEnter extends AppCompatActivity {
-    private TextView enterCode,enterAdventure;
+    private TextView enterAdventure;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_table_enter);
-        enterCode = findViewById(R.id.inviteEnter);
         enterAdventure = findViewById(R.id.adventureEnter);
 
     }
 
     public void enter(View view) {
-        String code = enterCode.getText().toString();
         String adventure = enterAdventure.getText().toString();
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
 

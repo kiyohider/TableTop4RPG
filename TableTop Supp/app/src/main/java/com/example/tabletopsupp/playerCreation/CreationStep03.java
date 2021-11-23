@@ -20,7 +20,7 @@ public class CreationStep03 extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CheckBox bullying, intuition, identifyMagic, initiative, cheat, stealth, cure, diplomacy, ride, knowledge, stunt,
             trainAnimals, perception, survival, getInformation, craft, gambling, thieving, athletics, acting, fortitude, war
-            , fight, aim, reflexes;
+            , fight, aim, reflexes, investigation, mysticism, nobility, piloting, religion, will;
     private int checkCount = 0;
     private Count check = new Count();
     private int skillRace, skillClass;
@@ -31,7 +31,6 @@ public class CreationStep03 extends AppCompatActivity {
         setContentView(R.layout.activity_creation_step03);
         bullying = findViewById(R.id.bullying);
         intuition = findViewById(R.id.intuition);
-        identifyMagic = findViewById(R.id.identifyMagic);
         initiative = findViewById(R.id.initiative);
         cheat = findViewById(R.id.cheat);
         stealth = findViewById(R.id.stealth);
@@ -43,7 +42,6 @@ public class CreationStep03 extends AppCompatActivity {
         trainAnimals = findViewById(R.id.trainAnimals);
         perception = findViewById(R.id.perception);
         survival = findViewById(R.id.survival);
-        getInformation = findViewById(R.id.getInformation);
         craft = findViewById(R.id.craft);
         gambling = findViewById(R.id.gambling);
         thieving = findViewById(R.id.thieving);
@@ -53,7 +51,13 @@ public class CreationStep03 extends AppCompatActivity {
         war = findViewById(R.id.war);
         fight = findViewById(R.id.fight);
         aim = findViewById(R.id.aim);
+        mysticism = findViewById(R.id.mysticism);
+        nobility = findViewById(R.id.nobility);
+        piloting = findViewById(R.id.piloting);
+        religion = findViewById(R.id.religion);
         reflexes = findViewById(R.id.reflexes);
+        investigation = findViewById(R.id.investigation);
+        will = findViewById(R.id.will);
 
 
         Bundle extras = getIntent().getExtras();
@@ -66,7 +70,7 @@ public class CreationStep03 extends AppCompatActivity {
             checkCount= skillClass;
             defineClass(NameClass);
         }
-        //countBox();
+
 
 
 
@@ -96,134 +100,251 @@ public class CreationStep03 extends AppCompatActivity {
         else if(define.equalsIgnoreCase("anão")){
 
         }
-
     }
 
-    public void countBox(){
 
+    public void countBox( View view){
 
-        if(bullying.callOnClick()){
-            checkCount += check.checked(checkCount, bullying);
-        }
-        if (intuition.callOnClick()){
-            checkCount += check.checked(checkCount, intuition);
-        }
-        if (identifyMagic.callOnClick()){
-            checkCount += check.checked(checkCount, identifyMagic);
-        }
+        boolean checked = ((CheckBox) view).isChecked();
 
-        if (initiative.callOnClick()){
-            checkCount += check.checked(checkCount, initiative);
-        }
-        if (cheat.callOnClick()){
-            checkCount += check.checked(checkCount, cheat);
-        }
-        if (stealth.callOnClick()){
-            checkCount += check.checked(checkCount, stealth);
-        }
-        if (cure.callOnClick()){
-            checkCount += check.checked(checkCount, cure);
-        }
-        else {
-            checkCount --;
-        }
-        if (diplomacy.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (ride.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (knowledge.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (stunt.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (trainAnimals.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (perception.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (survival.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (getInformation.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (craft.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (gambling.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (thieving.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (athletics.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
-        if (acting.isChecked()){
-            checkCount ++;
-        }
-        else {
-            checkCount --;
-        }
+        // Check which checkbox was clicked
+        switch(view.getId()) {
+            case R.id.acting:
+                if (checked){
+                    checkCount -= 1;
+                }
+            else
+                    checkCount +=1;
+                break;
 
+            case R.id.aim:
+                if (checked){
+                    checkCount -= 1;
+                }
+            else
+                    checkCount +=1;
+                break;
 
+            case R.id.athletics:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
 
+            case R.id.trainAnimals:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
 
+            case R.id.war:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
 
+            case R.id.ride:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
 
+            case R.id.bullying:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
 
+            case R.id.investigation:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.intuition:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.stealth:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.survival:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.cheat:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.initiative:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.cure:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.diplomacy:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.knowledge:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.stunt:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.perception:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.nobility:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.craft:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.gambling:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.thieving:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.fortitude:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.reflexes:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.mysticism:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.piloting:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.religion:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.will:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+
+            case R.id.fight:
+                if (checked){
+                    checkCount -= 1;
+                }
+                else
+                    checkCount +=1;
+                break;
+        }
     }
     public void print(View view) {
 
         Toast.makeText(this, Integer.toString(checkCount), Toast.LENGTH_SHORT).show();
     }
-    public void acting(View view) {
-
-        //checkCount += check.checked(checkCount, acting);
-
-    }
-
-
-
 
 }

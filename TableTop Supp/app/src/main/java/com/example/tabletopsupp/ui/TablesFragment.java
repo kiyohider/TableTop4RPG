@@ -46,9 +46,9 @@ public class TablesFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerTablesGM);
         floatingActionButton = view.findViewById(R.id.addTable);
 
+        setAdapterItems();
         loadUtilities();
         addItem();
-        setAdapterItems();
         return view;
     }
 

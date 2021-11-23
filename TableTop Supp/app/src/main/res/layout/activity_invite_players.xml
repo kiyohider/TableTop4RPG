@@ -13,6 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -24,40 +25,6 @@
                 android:text="Invite"
                 android:textColor="@color/my_primary_color"
                 android:textSize="36sp" />
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="222dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="8dp"
-                android:text="send the invite code and adventure name for your player"
-                android:textColor="@color/my_primary_color"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="Invite Code"
-                android:textColor="@color/my_primary_color"
-                android:textSize="30sp" />
-
-            <EditText
-                android:id="@+id/inviteCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/my_primary_color"
-                android:ems="10"
-                android:inputType="none"
-                android:layout_gravity="center"
-                android:clickable="false"
-                android:contextClickable="false"
-                android:editable="false"
-                />
 
             <TextView
                 android:id="@+id/textView16"
@@ -72,15 +39,14 @@
                 android:id="@+id/adventureInvite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@color/my_primary_color"
-                android:ems="10"
-                android:inputType="none"
-                android:layout_gravity="center"
                 android:clickable="false"
                 android:contextClickable="false"
                 android:editable="false"
-                />
+                android:ems="10"
+                android:inputType="none" />
 
             <Button
                 android:id="@+id/button5"

@@ -42,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Atletismo"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -52,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
-                    android:onClick="acting"
+                    android:onClick="countBox"
                     android:text="Atuação"
                     android:textAlignment="textStart"
                     android:textColor="@color/my_primary_color"
@@ -69,6 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Acrobacia"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -79,6 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Adestrar animais"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -97,8 +100,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Cavalgar"
                     android:textColor="@color/my_primary_color"
+
                     android:textSize="18sp" />
 
                 <CheckBox
@@ -107,6 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Conhecimento"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -123,6 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Cura"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -133,6 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Diplomacia"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -149,6 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Enganação"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -159,6 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Furtividade"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -175,6 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Fortitude"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -185,6 +196,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Guerra"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -201,8 +213,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Intimidação"
                     android:textColor="@color/my_primary_color"
+
                     android:textSize="18sp" />
 
                 <CheckBox
@@ -211,6 +225,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Intuição"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -222,40 +237,33 @@
                 android:layout_weight="1">
 
                 <CheckBox
-                    android:id="@+id/identifyMagic"
-                    android:layout_width="105dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:text="Identificar magia"
-                    android:textColor="@color/my_primary_color"
-                    android:textSize="18sp" />
-
-                <CheckBox
                     android:id="@+id/initiative"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Iniciativa"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
+
+                <CheckBox
+                    android:id="@+id/investigation"
+                    android:layout_width="105dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:onClick="countBox"
+                    android:text="Investigação"
+                    android:textColor="@color/my_primary_color"
+                    android:textSize="18sp" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
-
-                <CheckBox
-                    android:id="@+id/Investigation"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:text="Investigação"
-                    android:textColor="@color/my_primary_color"
-                    android:textSize="18sp" />
 
                 <CheckBox
                     android:id="@+id/gambling"
@@ -263,7 +271,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Jogatina"
+                    android:textColor="@color/my_primary_color"
+                    android:textSize="18sp" />
+
+                <CheckBox
+                    android:id="@+id/thieving"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:onClick="countBox"
+                    android:text="Ladinagem"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -272,16 +292,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
-
-                <CheckBox
-                    android:id="@+id/thieving"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:text="Ladinagem"
-                    android:textColor="@color/my_primary_color"
-                    android:textSize="18sp" />
 
                 <CheckBox
                     android:id="@+id/fight"
@@ -289,7 +299,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Luta"
+                    android:textColor="@color/my_primary_color"
+                    android:textSize="18sp" />
+
+                <CheckBox
+                    android:id="@+id/mysticism"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:onClick="countBox"
+                    android:text="Misticismo"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -298,16 +320,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
-
-                <CheckBox
-                    android:id="@+id/mysticism"
-                    android:layout_width="145dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:text="Misticismo"
-                    android:textColor="@color/my_primary_color"
-                    android:textSize="18sp" />
 
                 <CheckBox
                     android:id="@+id/nobility"
@@ -315,15 +327,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Nobreza"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
 
                 <CheckBox
                     android:id="@+id/craft"
@@ -331,17 +338,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Oficio"
-                    android:textColor="@color/my_primary_color"
-                    android:textSize="18sp" />
-
-                <CheckBox
-                    android:id="@+id/getInformation"
-                    android:layout_width="147dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:text="Obter informação"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -357,16 +355,18 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Percepção"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
 
                 <CheckBox
                     android:id="@+id/piloting"
-                    android:layout_width="145dp"
+                    android:layout_width="147dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Pilotagem"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -383,6 +383,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Pontaria"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -393,6 +394,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Reflexos"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -419,6 +421,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Sobrevivencia"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -431,10 +434,11 @@
 
                 <CheckBox
                     android:id="@+id/will"
-                    android:layout_width="wrap_content"
+                    android:layout_width="717dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="false"
+                    android:onClick="countBox"
                     android:text="Vontade"
                     android:textColor="@color/my_primary_color"
                     android:textSize="18sp" />
@@ -451,5 +455,12 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="205dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,13 +15,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class InvitePlayers extends AppCompatActivity {
     private String document = "";
-    private TextView inviteCode,inviteAdventure;
+    private TextView inviteAdventure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite_players);
-        inviteCode = findViewById(R.id.inviteCode);
         inviteAdventure = findViewById(R.id.adventureInvite);
 
         Bundle extras = getIntent().getExtras();
@@ -32,16 +31,13 @@ public class InvitePlayers extends AppCompatActivity {
         invite();
     }
     public void invite(){
-        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        inviteCode.setText(user);
         inviteAdventure.setText(document);
     }
 
     public void share(View view) {
         Intent myIntent = new Intent(Intent.ACTION_SEND);
         myIntent.setType("text/plain");
-        String body = "code = " + inviteCode.getText().toString() + "\n adventure = " + inviteAdventure.getText().toString();
+        String body = " adventure = " + inviteAdventure.getText().toString();
         String sub = "paste in enter new room";
         myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
         myIntent.putExtra(Intent.EXTRA_TEXT,body);

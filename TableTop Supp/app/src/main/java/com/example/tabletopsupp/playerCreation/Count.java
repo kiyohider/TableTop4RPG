@@ -20,11 +20,8 @@ public class Count {
 
                 return count;
             } else {
-                if (count > 0) {
                     count += 1;
-                } else {
 
-                }
                 return count;
             }
         }
