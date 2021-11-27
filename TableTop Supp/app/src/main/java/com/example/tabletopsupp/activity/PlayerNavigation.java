@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.ui.TablesFragment;
+import com.example.tabletopsupp.ui.Token;
 import com.example.tabletopsupp.ui.UtilitiesFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
@@ -26,14 +27,14 @@ public class PlayerNavigation extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        smartTabLayout = findViewById(R.id.viewPagerTab);
-        viewPager = findViewById(R.id.viewPager);
+        smartTabLayout = findViewById(R.id.viewPagerTabPlayer);
+        viewPager = findViewById(R.id.viewPagerPlayer);
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(),
                 FragmentPagerItems.with(this)
-                        .add("Tables", TablesFragment.class)
-                        .add("Utilities", UtilitiesFragment.class)
+                        .add("Token", Token.class)
+
                         .create()
         );
 

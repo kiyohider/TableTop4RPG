@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.adapter.AdapterTables;
@@ -40,9 +41,10 @@ public class MainPlayer extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerTablesP);
         floatingActionButton = findViewById(R.id.enterTable);
 
+        setAdapterItems();
         loadUtilities();
          addItem();
-        setAdapterItems();
+
     }
 
     public void loadUtilities() {
@@ -54,6 +56,7 @@ public class MainPlayer extends AppCompatActivity {
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                         if (error != null) {
                             Log.e("teste", error.getMessage());
+                            Toast.makeText(MainPlayer.this, "erro", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         List<DocumentSnapshot> docs = value.getDocuments();
@@ -95,8 +98,8 @@ public class MainPlayer extends AppCompatActivity {
         listener = new AdapterTables.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Intent intent = new Intent(getApplicationContext(), Table_Navigation.class);
-                intent.putExtra("name",tableList.get(position).getAdventureName());
+                Intent intent = new Intent(getApplicationContext(), PlayerNavigation.class);
+                intent.putExtra("adventure",tableList.get(position).getAdventureName());
                 startActivity(intent);
             }
         };

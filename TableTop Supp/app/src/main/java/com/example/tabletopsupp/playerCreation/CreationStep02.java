@@ -79,6 +79,7 @@ public class CreationStep02 extends AppCompatActivity {
             intent.putExtra("skillsR",skillRace);
             intent.putExtra("skillsC",skillClass);
             intent.putExtra("classes",infoClass);
+            intent.putExtra("adventure",adventure);
             startActivity(intent);
             finish();
         }
@@ -87,6 +88,7 @@ public class CreationStep02 extends AppCompatActivity {
             intent.putExtra("skillsR",skillRace);
             intent.putExtra("skillsC",skillClass);
             intent.putExtra("classes",infoClass);
+            intent.putExtra("adventure",adventure);
             startActivity(intent);
             finish();
         }

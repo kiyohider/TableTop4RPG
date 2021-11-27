@@ -2,6 +2,7 @@ package com.example.tabletopsupp.playerCreation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.tabletopsupp.R;
+import com.example.tabletopsupp.activity.PlayerNavigation;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.jar.Attributes;
@@ -24,7 +26,7 @@ public class CreationStep03 extends AppCompatActivity {
     private int checkCount = 0;
     private Count check = new Count();
     private int skillRace, skillClass;
-    private String NameClass;
+    private String NameClass, adventure;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +68,9 @@ public class CreationStep03 extends AppCompatActivity {
             skillRace = extras.getInt("skillsR");
             skillClass = extras.getInt("skillsC");
             NameClass = extras.getString("classes");
+            adventure = extras.getString("adventure");
 
-            checkCount= skillClass;
+            checkCount= skillClass - 1;
             defineClass(NameClass);
         }
 
@@ -110,176 +113,331 @@ public class CreationStep03 extends AppCompatActivity {
         // Check which checkbox was clicked
         switch(view.getId()) {
             case R.id.acting:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
             else
                     checkCount +=1;
                 break;
 
             case R.id.aim:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
             else
+
                     checkCount +=1;
                 break;
 
             case R.id.athletics:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.trainAnimals:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.war:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.ride:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.bullying:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.investigation:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.intuition:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.stealth:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.survival:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.cheat:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.initiative:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.cure:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.diplomacy:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.knowledge:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.stunt:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.perception:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.nobility:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.craft:
-                if (checked){
+                if (checked ){
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.gambling:
-                if (checked){
-                    checkCount -= 1;
+                if (checked ){
+                    if(checkCount > 0){
+
+                        checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
                 break;
 
             case R.id.thieving:
-                if (checked){
-                    checkCount -= 1;
+                if (checked ){
+                    if(checkCount > 0){
+
+                        checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
@@ -287,7 +445,14 @@ public class CreationStep03 extends AppCompatActivity {
 
             case R.id.fortitude:
                 if (checked){
-                    checkCount -= 1;
+                    if(checkCount > 0){
+
+                        checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
@@ -295,15 +460,32 @@ public class CreationStep03 extends AppCompatActivity {
 
             case R.id.reflexes:
                 if (checked){
+
+                    if(checkCount > 0){
+
                     checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
+
                     checkCount +=1;
+                Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.mysticism:
                 if (checked){
-                    checkCount -= 1;
+                    if(checkCount > 0){
+
+                        checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
@@ -311,7 +493,14 @@ public class CreationStep03 extends AppCompatActivity {
 
             case R.id.piloting:
                 if (checked){
-                    checkCount -= 1;
+                    if(checkCount > 0){
+
+                        checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
@@ -319,7 +508,14 @@ public class CreationStep03 extends AppCompatActivity {
 
             case R.id.religion:
                 if (checked){
-                    checkCount -= 1;
+                    if(checkCount > 0){
+
+                        checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
@@ -327,7 +523,14 @@ public class CreationStep03 extends AppCompatActivity {
 
             case R.id.will:
                 if (checked){
-                    checkCount -= 1;
+                    if(checkCount > 0){
+
+                        checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
                     checkCount +=1;
@@ -335,16 +538,42 @@ public class CreationStep03 extends AppCompatActivity {
 
             case R.id.fight:
                 if (checked){
-                    checkCount -= 1;
+                    if(checkCount > 0){
+
+                        checkCount -= 1;
+                        Toast.makeText(this, String.valueOf(checkCount), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        disable();
+                    }
                 }
                 else
+
                     checkCount +=1;
                 break;
         }
     }
+
+    public void disable(){
+        trainAnimals.setEnabled(false);
+        athletics.setEnabled(false);
+        ride.setEnabled(false);
+        war.setEnabled(false);
+        initiative.setEnabled(false);
+        bullying.setEnabled(false);
+        fight.setEnabled(false);
+        craft.setEnabled(false);
+        perception.setEnabled(false);
+        aim.setEnabled(false);
+        reflexes.setEnabled(false);
+    }
+
     public void print(View view) {
 
-        Toast.makeText(this, Integer.toString(checkCount), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), PlayerNavigation.class);
+        intent.putExtra("adventure",adventure);
+        startActivity(intent);
+        finish();
     }
 
 }
