@@ -25,11 +25,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.List;
 
 
-public class Token extends Fragment {
+public class TokenFragment extends Fragment {
     private String Document = "";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    private TextView name, race, lvl, lvlC, classP, str, dex;
+    private TextView name, race, lvl, lvlC, classP, str, dex, consti, intel, charis, sab;
     private int Smod, Dmod;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,6 +42,10 @@ public class Token extends Fragment {
         classP = view.findViewById(R.id.classPlayer);
         str = view.findViewById(R.id.strenghP);
         dex = view.findViewById(R.id.dexP);
+        consti = view.findViewById(R.id.constP);
+        intel = view.findViewById(R.id.intP);
+        charis = view.findViewById(R.id.charP);
+        sab = view.findViewById(R.id.sabP);
 
 
 
@@ -49,9 +53,9 @@ public class Token extends Fragment {
         if (extras != null) {
 
             Document = extras.getString("adventure");
-
+            loadUtilities();
         }
-        loadUtilities();
+
 
         return view;
     }
@@ -90,13 +94,21 @@ public class Token extends Fragment {
                 str.setText(value.get("strenght").toString() +"| "+ modcall(supp));
                 supp = value.get("dexterity").toString();
                 dex.setText(value.get("dexterity").toString() +"| "+ modcall(supp));
+                supp = value.get("dexterity").toString();
+                consti.setText(value.get("constitution").toString() +"| "+ modcall(supp));
+                supp = value.get("dexterity").toString();
+                intel.setText(value.get("intelligence").toString() +"| "+ modcall(supp));
+                supp = value.get("dexterity").toString();
+                charis.setText(value.get("charisma").toString() +"| "+ modcall(supp));
+                supp = value.get("dexterity").toString();
+                sab.setText(value.get("wisdom").toString() +"| "+ modcall(supp));
 
             }
         });
     }
 
     public String modcall(String mod){
-        int modBase, modcalc = 10;
+        int modBase = 0, modcalc = 10;
         String back;
 
         modBase = Integer.valueOf(mod);

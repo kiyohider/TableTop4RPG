@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.Skills">
+
+    <ScrollView
+        android:id="@+id/scrollView7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pericias"
+                android:textAlignment="center"
+                android:textColor="@color/my_primary_color"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/craft2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Oficio"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/thieving2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Ladinagem"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/piloting2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Pilotagem"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/diplomacy2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Diplomacia"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/survival2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Sobrevivencia"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/trainAnimals2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Adestrar animais"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/acting2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Atuação"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/intuition2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Intuição"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/war2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Guerra"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/investigation2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Investigação"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/mysticism2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Misticismo"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/reflexes2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Reflexos"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/knowledge2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Conhecimento"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/stealth2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Furtividade"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/athletics2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Atletismo"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/stunt2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Acrobacia"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/ride2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Cavalgar"
+                        android:textColor="@color/my_primary_color"
+
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/cure2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Cura"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/cheat2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Enganação"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/fortitude2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Fortitude"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/bullying2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Intimidação"
+                        android:textColor="@color/my_primary_color"
+
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/initiative2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Iniciativa"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/gambling2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Jogatina"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/fight2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Luta"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/nobility2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Nobreza"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/perception2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Percepção"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/aim2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Pontaria"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/religion2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Religião"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/will2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Vontade"
+                        android:textColor="@color/my_primary_color"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/editTextNone25"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone26"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone27"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone28"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone29"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone30"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone18"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone19"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone20"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone21"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone22"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+
+                    <EditText
+                        android:id="@+id/editTextNone23"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/my_primary_color"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:editable="false"
+                        android:ems="10"
+                        android:inputType="none" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,11 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Token">
+    tools:context=".ui.TokenFragment">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/scrollView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,6 +75,12 @@
                     android:textColor="@color/my_primary_color" />
             </LinearLayout>
 
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -100,28 +111,33 @@
 
             </LinearLayout>
 
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/my_primary_color"
-                    android:ems="10"
                     android:clickable="false"
                     android:contextClickable="false"
                     android:editable="false"
+                    android:ems="10"
                     android:inputType="none"
-                    android:text="Força" />
+                    android:text="For:" />
 
                 <EditText
                     android:id="@+id/strenghP"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/my_primary_color"
                     android:clickable="false"
@@ -131,17 +147,16 @@
                     android:inputType="none" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/my_primary_color"
-                    android:ems="10"
                     android:clickable="false"
                     android:contextClickable="false"
                     android:editable="false"
+                    android:ems="10"
                     android:inputType="none"
-                    android:text="Agilidade" />
+                    android:text="Des:" />
 
                 <EditText
                     android:id="@+id/dexP"
@@ -157,15 +172,332 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <View
+                android:id="@+id/view17"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
+                android:layout_height="2dip"
+                android:background="#FF909090" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/my_primary_color"
+                    android:clickable="false"
+                    android:contextClickable="false"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="none"
+                    android:text="Con:" />
+
+                <EditText
+                    android:id="@+id/constP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/my_primary_color"
+                    android:clickable="false"
+                    android:contextClickable="false"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="none"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/my_primary_color"
+                    android:clickable="false"
+                    android:contextClickable="false"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="none"
+                    android:text="Int:" />
+
+                <EditText
+                    android:id="@+id/intP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/my_primary_color"
+                    android:clickable="false"
+                    android:contextClickable="false"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="none" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view18"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/my_primary_color"
+                    android:clickable="false"
+                    android:contextClickable="false"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="none"
+                    android:text="Sab:" />
+
+                <EditText
+                    android:id="@+id/sabP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/my_primary_color"
+                    android:clickable="false"
+                    android:contextClickable="false"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="none" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/my_primary_color"
+                    android:clickable="false"
+                    android:contextClickable="false"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="none"
+                    android:text="Car:" />
+
+                <EditText
+                    android:id="@+id/charP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/my_primary_color"
+                    android:clickable="false"
+                    android:contextClickable="false"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="none" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="habilidades de raça"
+                android:textAlignment="center"
+                android:textColor="@color/my_primary_color" />
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/my_primary_color"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/my_primary_color"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none" />
+
+
+            <View
+                android:id="@+id/view8"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/my_primary_color"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/my_primary_color"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/my_primary_color"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="habilidades de classe"
+                android:textAlignment="center"
+                android:textColor="@color/my_primary_color" />
+
+            <View
+                android:id="@+id/view10"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/my_primary_color"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none" />
+
+            <View
+                android:id="@+id/view16"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/my_primary_color"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none" />
+
+            <View
+                android:id="@+id/view11"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/my_primary_color"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none" />
+
+            <View
+                android:id="@+id/view12"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/my_primary_color"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none" />
+
+            <View
+                android:id="@+id/view13"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/my_primary_color"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none" />
+
+            <View
+                android:id="@+id/view14"
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="#FF909090" />
 
         </LinearLayout>
     </ScrollView>

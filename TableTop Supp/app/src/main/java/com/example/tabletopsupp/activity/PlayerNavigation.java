@@ -7,9 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.example.tabletopsupp.R;
-import com.example.tabletopsupp.ui.TablesFragment;
-import com.example.tabletopsupp.ui.Token;
-import com.example.tabletopsupp.ui.UtilitiesFragment;
+import com.example.tabletopsupp.ui.TokenFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
@@ -33,7 +31,7 @@ public class PlayerNavigation extends AppCompatActivity {
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(),
                 FragmentPagerItems.with(this)
-                        .add("Token", Token.class)
+                        .add("Token", TokenFragment.class)
 
                         .create()
         );

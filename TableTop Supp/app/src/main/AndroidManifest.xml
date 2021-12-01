@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TableTopSupp">
-        <activity android:name=".ui.Token"></activity>
+        <activity android:name=".activity.Skills"></activity>
+        <activity android:name=".ui.TokenFragment" />
         <activity android:name=".activity.TablesOption" />
         <activity android:name=".playerCreation.CreationStep03" />
         <activity android:name=".playerCreation.CreationStep02" />
