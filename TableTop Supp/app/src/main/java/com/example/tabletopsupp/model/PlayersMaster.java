@@ -5,8 +5,19 @@ public class PlayersMaster {
     private  String playerRace;
     private String playerClass;
     private  String playerLevel;
+    private String uid;
+
+
 
     public PlayersMaster(){
+    }
+
+    public PlayersMaster(String playerName, String playerRace, String playerClass, String playerLevel, String uid) {
+        this.playerName = playerName;
+        this.playerRace = playerRace;
+        this.playerClass = playerClass;
+        this.playerLevel = playerLevel;
+        this.uid = uid;
     }
 
     public PlayersMaster(String playerName, String playerRace, String playerClass, String playerLevel) {
@@ -46,5 +57,13 @@ public class PlayersMaster {
 
     public void setPlayerLevel(String playerLevel) {
         this.playerLevel = playerLevel;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

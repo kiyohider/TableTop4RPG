@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.TokenFragment">
+    tools:context=".ui.PlayerTokenFragment">
 
     <ScrollView
-        android:id="@+id/scrollView5"
+        android:id="@+id/scrollView51"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +26,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView27"
+                    android:id="@+id/textView271"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -34,7 +34,7 @@
                     android:textColor="@color/my_primary_color" />
 
                 <TextView
-                    android:id="@+id/playerName"
+                    android:id="@+id/playerName1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -42,7 +42,7 @@
                     android:textColor="@color/my_primary_color" />
 
                 <TextView
-                    android:id="@+id/textView28"
+                    android:id="@+id/textView281"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -50,7 +50,7 @@
                     android:textColor="@color/my_primary_color" />
 
                 <TextView
-                    android:id="@+id/playerRace"
+                    android:id="@+id/playerRace1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -59,7 +59,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/textView101"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -67,7 +67,7 @@
                     android:textColor="@color/my_primary_color" />
 
                 <TextView
-                    android:id="@+id/lvlPlayer"
+                    android:id="@+id/lvlPlayer1"
                     android:layout_width="8dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -76,7 +76,7 @@
             </LinearLayout>
 
             <View
-                android:id="@+id/view"
+                android:id="@+id/view0"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
@@ -88,21 +88,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView29"
+                    android:id="@+id/textView291"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Classe: "
                     android:textColor="@color/my_primary_color" />
 
                 <TextView
-                    android:id="@+id/classPlayer"
+                    android:id="@+id/classPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="classe:"
                     android:textColor="@color/my_primary_color" />
 
                 <TextView
-                    android:id="@+id/lvlClass"
+                    android:id="@+id/lvlClass1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -112,7 +112,7 @@
             </LinearLayout>
 
             <View
-                android:id="@+id/view2"
+                android:id="@+id/view211"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
@@ -135,7 +135,7 @@
                     android:text="For:" />
 
                 <EditText
-                    android:id="@+id/strenghP"
+                    android:id="@+id/strenghP1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -159,7 +159,7 @@
                     android:text="Des:" />
 
                 <EditText
-                    android:id="@+id/dexP"
+                    android:id="@+id/dexP1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -173,7 +173,7 @@
             </LinearLayout>
 
             <View
-                android:id="@+id/view17"
+                android:id="@+id/view171"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
@@ -196,7 +196,7 @@
                     android:text="Con:" />
 
                 <EditText
-                    android:id="@+id/constP"
+                    android:id="@+id/constP1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -221,7 +221,7 @@
                     android:text="Int:" />
 
                 <EditText
-                    android:id="@+id/intP"
+                    android:id="@+id/intP1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -235,7 +235,7 @@
             </LinearLayout>
 
             <View
-                android:id="@+id/view18"
+                android:id="@+id/view181"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
@@ -258,7 +258,7 @@
                     android:text="Sab:" />
 
                 <EditText
-                    android:id="@+id/sabP"
+                    android:id="@+id/sabP1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -282,7 +282,7 @@
                     android:text="Car:" />
 
                 <EditText
-                    android:id="@+id/charP"
+                    android:id="@+id/charP1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -296,13 +296,13 @@
             </LinearLayout>
 
             <View
-                android:id="@+id/view7"
+                android:id="@+id/view711"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/textView221"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="habilidades de raça"
@@ -310,13 +310,13 @@
                 android:textColor="@color/my_primary_color" />
 
             <View
-                android:id="@+id/view6"
+                android:id="@+id/view61"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/raceSkill1"
+                android:id="@+id/raceSkill11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -332,7 +332,7 @@
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/raceSkill2"
+                android:id="@+id/raceSkill21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -344,13 +344,13 @@
 
 
             <View
-                android:id="@+id/view8"
+                android:id="@+id/view811"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/raceSkill3"
+                android:id="@+id/raceSkill31"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -361,13 +361,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view3"
+                android:id="@+id/view311"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/raceSkill4"
+                android:id="@+id/raceSkill41"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -378,13 +378,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view4"
+                android:id="@+id/view411"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/raceSkill5"
+                android:id="@+id/raceSkill51"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -395,13 +395,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view5"
+                android:id="@+id/view511"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/textView231"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="habilidades de classe"
@@ -409,13 +409,13 @@
                 android:textColor="@color/my_primary_color" />
 
             <View
-                android:id="@+id/view10"
+                android:id="@+id/view1011"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/classSkill1"
+                android:id="@+id/classSkill11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -426,13 +426,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view16"
+                android:id="@+id/view161"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/classSkill2"
+                android:id="@+id/classSkill21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -443,13 +443,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view11"
+                android:id="@+id/view1111"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/classSkill3"
+                android:id="@+id/classSkill31"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -460,13 +460,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view12"
+                android:id="@+id/view1211"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/classSkill4"
+                android:id="@+id/classSkill41"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -477,13 +477,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view13"
+                android:id="@+id/view1311"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/classSkill5"
+                android:id="@+id/classSkill51"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -494,7 +494,7 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view14"
+                android:id="@+id/view1411"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
@@ -507,13 +507,13 @@
                 android:textColor="@color/my_primary_color" />
 
             <View
-                android:id="@+id/view9"
+                android:id="@+id/view911"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/talent1"
+                android:id="@+id/talent11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -524,13 +524,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view15"
+                android:id="@+id/view1511"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/talent2"
+                android:id="@+id/talent21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -541,13 +541,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view19"
+                android:id="@+id/view1911"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/talent3"
+                android:id="@+id/talent31"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -558,13 +558,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view20"
+                android:id="@+id/view201"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/talent4"
+                android:id="@+id/talent41"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -575,13 +575,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view21"
+                android:id="@+id/view21111"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/talent5"
+                android:id="@+id/talent51"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -592,13 +592,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view22"
+                android:id="@+id/view2211"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <TextView
-                android:id="@+id/textView30"
+                android:id="@+id/textView301"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Magias"
@@ -606,13 +606,13 @@
                 android:textColor="@color/my_primary_color" />
 
             <View
-                android:id="@+id/view23"
+                android:id="@+id/view2311"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/magic1"
+                android:id="@+id/magic11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -623,13 +623,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view24"
+                android:id="@+id/view241"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/magic2"
+                android:id="@+id/magic21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -640,13 +640,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view25"
+                android:id="@+id/view2511"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/magic3"
+                android:id="@+id/magic31"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -657,13 +657,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view26"
+                android:id="@+id/view261"
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/magic4"
+                android:id="@+id/magic41"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -674,13 +674,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view27"
+
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/magic5"
+                android:id="@+id/magic51"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -691,13 +691,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view28"
+
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/magic6"
+                android:id="@+id/magic61"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -708,13 +708,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view29"
+
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/magic7"
+                android:id="@+id/magic71"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -725,13 +725,13 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view30"
+
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />
 
             <EditText
-                android:id="@+id/magic8"
+                android:id="@+id/magic81"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/my_primary_color"
@@ -742,7 +742,7 @@
                 android:inputType="none" />
 
             <View
-                android:id="@+id/view31"
+
                 android:layout_width="match_parent"
                 android:layout_height="2dip"
                 android:background="#FF909090" />

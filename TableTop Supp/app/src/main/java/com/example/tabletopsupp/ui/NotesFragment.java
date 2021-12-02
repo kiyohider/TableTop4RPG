@@ -14,10 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tabletopsupp.R;
-import com.example.tabletopsupp.activity.GameMasterTokenNavigation;
-import com.example.tabletopsupp.activity.InvitePlayers;
-import com.example.tabletopsupp.adapter.AdapterPlayer;
-import com.example.tabletopsupp.model.PlayersMaster;
+import com.example.tabletopsupp.activity.NoteCreation;
+import com.example.tabletopsupp.activity.NotePlayerCreation;
+import com.example.tabletopsupp.activity.NotesPage;
+import com.example.tabletopsupp.adapter.AdapterNotes;
+import com.example.tabletopsupp.model.NotesMaster;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -29,30 +30,30 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayersFragment extends Fragment {
+
+public class NotesFragment extends Fragment {
+
     private RecyclerView recyclerView;
-    private AdapterPlayer.RecyclerViewClickListener listener;
-    private List<PlayersMaster> playersList = new ArrayList<>();
+    private AdapterNotes.RecyclerViewClickListener listener;
+    private List<NotesMaster> notesList = new ArrayList<>();
     private FloatingActionButton floatingActionButton;
     private String Document = "";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private List <String> UIDplayer = new ArrayList<>();
-    private int i = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_players, container, false);
-        floatingActionButton = view.findViewById(R.id.addPlayer);
-        recyclerView = view.findViewById(R.id.recyclerTablesPlayers);
+        View view = inflater.inflate(R.layout.fragment_notes, container, false);
+        floatingActionButton = view.findViewById(R.id.newNote);
+        recyclerView = view.findViewById(R.id.recyclerPlayerNotes);
 
         Bundle extras = getActivity().getIntent().getExtras();
-        if (extras != null){
-            Document = extras.getString("name");
+        if (extras != null) {
+            Document = extras.getString("adventure");
         }
 
         loadUtilities();
-        addPlayer();
+        addNotes();
         setAdapterItems();
 
         return view;
@@ -61,63 +62,59 @@ public class PlayersFragment extends Fragment {
     public void loadUtilities(){
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        db.collection("tables").document(Document).collection("players")
+        db.collection("tables").document(Document).collection("players").document(user).collection("notes")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            Log.e("teste", error.getMessage());
+                        if (error != null){
+                            Log.e("teste",error.getMessage());
                             return;
                         }
                         List<DocumentSnapshot> docs = value.getDocuments();
-                        for (int i = 0; i < docs.size(); i++) {
-                            String pName = docs.get(i).get("playerName").toString();
-                            String pRace = docs.get(i).get("playerRace").toString();
-                            String pClass = docs.get(i).get("playerClass").toString();
-                            String pLevel = docs.get(i).get("playerLevel").toString();
-                            String uid = docs.get(i).get("uid").toString();
-
-                            makeItems(pName, pRace, pClass, pLevel, uid);
+                        for (int i = 0;i< docs.size();i++){
+                            String tittle = docs.get(i).get("noteName").toString();
+                            String body = docs.get(i).get("noteText").toString();
+                            makeNotes(tittle, body);
                         }
                     }
                 });
     }
 
-    public void makeItems(String name, String race, String Class, String level, String uid) {
-        PlayersMaster playersMaster = new PlayersMaster(name, race, Class, level, uid);
-        this.playersList.add(playersMaster);
+    public void makeNotes(String name, String text) {
+        NotesMaster noteMaster = new NotesMaster(name,text);
+        this.notesList.add(noteMaster);
     }
 
-    public void addPlayer() {
+    public void addNotes() {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), InvitePlayers.class);
-                intent.putExtra("name",Document);
+                Intent intent = new Intent(getContext(), NotePlayerCreation.class);
+                intent.putExtra("adventure",Document);
                 startActivity(intent);
             }
         });
     }
 
     private void setAdapterItems() {
-         setOnClickListener();
-        AdapterPlayer adapterPlayer = new AdapterPlayer(playersList, listener);
+        setOnClickListener();
+        AdapterNotes adapterNotes = new AdapterNotes(notesList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapterPlayer);
+        recyclerView.setAdapter(adapterNotes);
     }
 
-
     private void setOnClickListener() {
-        listener = new AdapterPlayer.RecyclerViewClickListener() {
+        listener = new AdapterNotes.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Intent intent = new Intent(getContext(), GameMasterTokenNavigation.class);
-                intent.putExtra("name",Document);
-                intent.putExtra("uid", playersList.get(position).getUid());
+                Intent intent = new Intent(getContext(), NotesPage.class);
+                intent.putExtra("head",notesList.get(position).getnoteName());
+                intent.putExtra("body",notesList.get(position).getnoteText());
                 startActivity(intent);
             }
         };
     }
+
 }

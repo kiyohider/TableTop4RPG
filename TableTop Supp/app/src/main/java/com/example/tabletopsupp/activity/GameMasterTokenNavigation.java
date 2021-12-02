@@ -9,35 +9,34 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.tabletopsupp.R;
-import com.example.tabletopsupp.ui.InventoryFragment;
-import com.example.tabletopsupp.ui.NotesFragment;
-import com.example.tabletopsupp.ui.TokenFragment;
+import com.example.tabletopsupp.ui.BackpackFragment;
+import com.example.tabletopsupp.ui.PlayerTokenFragment;
+import com.example.tabletopsupp.ui.TablesFragment;
+import com.example.tabletopsupp.ui.UtilitiesFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
-public class PlayerNavigation extends AppCompatActivity {
+public class GameMasterTokenNavigation extends AppCompatActivity {
     private SmartTabLayout smartTabLayout;
     private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_navigation);
+        setContentView(R.layout.activity_game_master_token_navigation);
 
-        //get to config action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        smartTabLayout = findViewById(R.id.viewPagerTabPlayer);
-        viewPager = findViewById(R.id.viewPagerPlayer);
+        smartTabLayout = findViewById(R.id.viewPagerTabToken);
+        viewPager = findViewById(R.id.viewPagerToken);
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(),
                 FragmentPagerItems.with(this)
-                        .add("Token", TokenFragment.class)
-                        .add("Notes", NotesFragment.class)
-                        .add("Inventory", InventoryFragment.class)
+                        .add("Token", PlayerTokenFragment.class)
+                        .add("BackPack", BackpackFragment.class)
                         .create()
         );
 
@@ -54,4 +53,5 @@ public class PlayerNavigation extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

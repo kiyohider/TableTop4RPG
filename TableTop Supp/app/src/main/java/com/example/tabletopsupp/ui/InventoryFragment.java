@@ -1,5 +1,6 @@
 package com.example.tabletopsupp.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -13,8 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tabletopsupp.R;
+import com.example.tabletopsupp.activity.Table_Navigation;
 import com.example.tabletopsupp.adapter.AdapterItensPlayer;
+import com.example.tabletopsupp.adapter.AdapterTables;
 import com.example.tabletopsupp.model.ItensPlayer;
+import com.example.tabletopsupp.model.TableMaster;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -26,37 +31,37 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class BackpackFragment extends Fragment {
+public class InventoryFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<ItensPlayer> itensPlayerList = new ArrayList<>();
     private AdapterItensPlayer.RecyclerViewClickListener listener;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Query query;
-    private String Document = "", uid = "";
+    private String Document = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_backpack, container, false);
-        recyclerView = view.findViewById(R.id.recyclerItensG);
+        View view = inflater.inflate(R.layout.fragment_inventory, container, false);
+        recyclerView = view.findViewById(R.id.recyclerItensP);
 
 
         Bundle extras = getActivity().getIntent().getExtras();
         if (extras != null) {
-            Document = extras.getString("name");
-            uid = extras.getString("uid");
-            loadUtilities();
+            Document = extras.getString("adventure");
         }
         setAdapterItems();
+        loadUtilities();
+
+
 
         return view;
     }
 
 
     public void loadUtilities() {
-
-        query = db.collection("tables").document(Document).collection("players").document(uid).collection("inventory");
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        query = db.collection("tables").document(Document).collection("players").document(user).collection("inventory");
 
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -107,4 +112,5 @@ public class BackpackFragment extends Fragment {
     }
 
     */
+
 }

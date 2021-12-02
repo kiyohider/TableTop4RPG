@@ -132,7 +132,7 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String name = characterN.getText().toString();
         String adventure = "";
-        PlayersMaster player = new PlayersMaster(name,itemSelectedR,itemSelectedC,"1");
+        PlayersMaster player = new PlayersMaster(name,itemSelectedR,itemSelectedC,"1", user);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null){

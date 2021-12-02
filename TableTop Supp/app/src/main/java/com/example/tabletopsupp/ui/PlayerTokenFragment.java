@@ -5,13 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.tabletopsupp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,50 +16,44 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.List;
 
 
-public class TokenFragment extends Fragment {
-    private String Document = "";
+public class PlayerTokenFragment extends Fragment {
+    private String Document = "", uid = "";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private TextView name, race, lvl, lvlC, classP, str, dex, consti, intel, charis, sab;
-    private int Smod, Dmod;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_token, container, false);
-        name = view.findViewById(R.id.playerName);
-        race = view.findViewById(R.id.playerRace);
-        lvl = view.findViewById(R.id.lvlPlayer);
-        lvlC = view.findViewById(R.id.lvlClass);
-        classP = view.findViewById(R.id.classPlayer);
-        str = view.findViewById(R.id.strenghP);
-        dex = view.findViewById(R.id.dexP);
-        consti = view.findViewById(R.id.constP);
-        intel = view.findViewById(R.id.intP);
-        charis = view.findViewById(R.id.charP);
-        sab = view.findViewById(R.id.sabP);
-
-
+        View view = inflater.inflate(R.layout.fragment_player_token, container, false);
+        name = view.findViewById(R.id.playerName1);
+        race = view.findViewById(R.id.playerRace1);
+        lvl = view.findViewById(R.id.lvlPlayer1);
+        lvlC = view.findViewById(R.id.lvlClass1);
+        classP = view.findViewById(R.id.classPlayer1);
+        str = view.findViewById(R.id.strenghP1);
+        dex = view.findViewById(R.id.dexP1);
+        consti = view.findViewById(R.id.constP1);
+        intel = view.findViewById(R.id.intP1);
+        charis = view.findViewById(R.id.charP1);
+        sab = view.findViewById(R.id.sabP1);
 
         Bundle extras = getActivity().getIntent().getExtras();
         if (extras != null) {
 
-            Document = extras.getString("adventure");
+            Document = extras.getString("name");
+            uid = extras.getString("uid");
             loadUtilities();
         }
-
 
         return view;
     }
 
     public void loadUtilities(){
 
-        db.collection("tables").document(Document).collection("players").document(user)
+        db.collection("tables").document(Document).collection("players").document(uid)
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -71,8 +62,8 @@ public class TokenFragment extends Fragment {
                         namePlayer = value.get("playerName").toString();
                         racePlayer = value.get("playerRace").toString();
                         classPlayer = value.get("playerClass").toString();
-                       lvl.setText(value.get("playerLevel").toString());
-                       lvlC.setText(value.get("playerLevel").toString());
+                        lvl.setText(value.get("playerLevel").toString());
+                        lvlC.setText(value.get("playerLevel").toString());
                         tittle(namePlayer, racePlayer, classPlayer);
                     }
                 });
@@ -84,7 +75,7 @@ public class TokenFragment extends Fragment {
         race.setText(racePlay);
         classP.setText(classPlay);
 
-        db.collection("tables").document(Document).collection("players").document(user)
+        db.collection("tables").document(Document).collection("players").document(uid)
                 .collection("Token").document(namePlay).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -135,7 +126,6 @@ public class TokenFragment extends Fragment {
         return back;
 
     }
-
 
 
 }
