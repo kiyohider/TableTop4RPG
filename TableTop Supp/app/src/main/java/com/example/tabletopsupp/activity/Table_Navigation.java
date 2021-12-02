@@ -36,7 +36,6 @@ public class Table_Navigation extends AppCompatActivity {
                 FragmentPagerItems.with(this)
                         .add("Players", PlayersFragment.class)
                         .add("Story", StoryFragment.class)
-                        .add("Battle", BattleFragment.class)
                         .create()
         );
         viewPager.setAdapter(adapter);

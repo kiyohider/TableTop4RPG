@@ -15,28 +15,27 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-
 public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder>{
-    private List<ItensMaster> tablesList;
+    private List<ItensMaster> itensList;
     private RecyclerViewClickListener listener;
 
-    public AdapterItens(List<ItensMaster> tables, RecyclerViewClickListener listener) {
+    public AdapterItens(List<ItensMaster> items, RecyclerViewClickListener listener) {
 
-        this.tablesList = tables;
+        this.itensList = items;
         this.listener = listener;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemTableList = LayoutInflater.from(parent.getContext())
+        View itemList = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.model_itens, parent, false);
 
-        return new MyViewHolder(itemTableList);
+        return new MyViewHolder(itemList);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ItensMaster itemsMaster = tablesList.get(position);
+        ItensMaster itemsMaster = itensList.get(position);
         holder.itemName.setText((itemsMaster.getItemName()));
         Picasso.get()
                 .load(itemsMaster.getItemPhoto())
@@ -45,7 +44,7 @@ public class AdapterItens extends RecyclerView.Adapter<AdapterItens.MyViewHolder
 
     @Override
     public int getItemCount() {
-        return tablesList.size();
+        return itensList.size();
     }
 
 

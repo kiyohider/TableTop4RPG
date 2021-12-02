@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tabletopsupp.R;
 import com.example.tabletopsupp.model.PlayersMaster;
@@ -45,38 +46,59 @@ public class NewTableEnter extends AppCompatActivity {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         PlayersMaster player = new PlayersMaster();
-        db.collection("tables").document(adventure).collection("players")
-                .document(user).set(player).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+        db.collection("tables").document(adventure).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(Void aVoid) {
-            }
-        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.i("testeuri", e.getMessage());
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        db.collection("tables").document(adventure).collection("players")
+                                .document(user).set(player).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                            }
+                        })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.i("testeuri", e.getMessage());
+                                    }
+                                });
+
+                        db.collection("tables").document(adventure).update(user,user)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.i("testeuri", e.getMessage());
+                                    }
+                                });
+
+                        Intent intent = new Intent(getApplicationContext(), CreationStep01.class);
+                        intent.putExtra("adventure",adventure);
+                        startActivity(intent);
+
+                        finish();
+
+
+                    } else {
+
+                        Toast.makeText(NewTableEnter.this, "this adventure  not exists", Toast.LENGTH_SHORT).show();
                     }
-                });
+                } else {
 
-
-        db.collection("tables").document(adventure).update(user,user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
+                }
             }
-        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.i("testeuri", e.getMessage());
-                    }
-                });
+        });
 
-        Intent intent = new Intent(getApplicationContext(), CreationStep01.class);
-        intent.putExtra("adventure",adventure);
-        startActivity(intent);
 
-        finish();
+
+
 
     }
 

@@ -36,7 +36,7 @@ public class AdapterItensPlayer extends RecyclerView.Adapter<AdapterItensPlayer.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ItensPlayer itensPlayer = itensPlayerListList.get(position);
-        holder.itemName.setText((itensPlayer.getItemName()));
+        holder.itemName.setText(itensPlayer.getItemName());
         holder.itemCount.setText(itensPlayer.getItemCont());
         holder.itemWeight.setText(itensPlayer.getItemWeigth());
     }

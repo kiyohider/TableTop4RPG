@@ -105,22 +105,7 @@ public class NewTable extends AppCompatActivity implements AdapterView.OnItemSel
         });
 
 
-        /*db.collection("tables")
-                .document(tableName)
-                .set(tableMaster)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.i("testeuri", e.getMessage());
-                    }
-                });
-        finish();
-*/
+
     }
 
     public void AddData() {
