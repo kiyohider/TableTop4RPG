@@ -13,10 +13,10 @@ import com.example.tabletopsupp.model.PlayersMaster;
 
 import java.util.List;
 
-public class AdapterPlayer extends RecyclerView.Adapter<AdapterPlayer.MyViewHolder>
-{
+public class AdapterPlayer extends RecyclerView.Adapter<AdapterPlayer.MyViewHolder> {
     private List<PlayersMaster> playersList;
     private RecyclerViewClickListener listener;
+
     public AdapterPlayer(List<PlayersMaster> players, RecyclerViewClickListener listener) {
         this.playersList = players;
         this.listener = listener;
@@ -45,8 +45,7 @@ public class AdapterPlayer extends RecyclerView.Adapter<AdapterPlayer.MyViewHold
     }
 
 
-
-    public  class MyViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView playerName;
         TextView playerRace;
         TextView playerClass;
@@ -55,10 +54,10 @@ public class AdapterPlayer extends RecyclerView.Adapter<AdapterPlayer.MyViewHold
         public MyViewHolder(@NonNull View playerView) {
             super(playerView);
 
-             playerName = playerView.findViewById(R.id.playerNameTxt);
-             playerRace = playerView.findViewById(R.id.playerRaceTxt);
-             playerClass = playerView.findViewById(R.id.playerClassTxt);
-             playerLevel = playerView.findViewById(R.id.playerLevelTxt);
+            playerName = playerView.findViewById(R.id.playerNameTxt);
+            playerRace = playerView.findViewById(R.id.playerRaceTxt);
+            playerClass = playerView.findViewById(R.id.playerClassTxt);
+            playerLevel = playerView.findViewById(R.id.playerLevelTxt);
 
             playerView.setOnClickListener(this);
         }
@@ -69,7 +68,7 @@ public class AdapterPlayer extends RecyclerView.Adapter<AdapterPlayer.MyViewHold
         }
     }
 
-    public  interface  RecyclerViewClickListener{
+    public interface RecyclerViewClickListener {
         void onClick(View view, int position);
     }
 }

@@ -25,7 +25,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class NoteCreation extends AppCompatActivity {
-    private  String document = "";
+    private String document = "";
     private EditText tittle, body;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -35,13 +35,14 @@ public class NoteCreation extends AppCompatActivity {
         setContentView(R.layout.activity_note_creation);
 
         Bundle extras = getIntent().getExtras();
-        if (extras != null){
+        if (extras != null) {
             document = extras.getString("name");
         }
 
         tittle = findViewById(R.id.noteHead);
         body = findViewById(R.id.noteBody);
     }
+
     private void saveUserStore() {
         String noteName = tittle.getText().toString();
         String noteText = body.getText().toString();
@@ -67,7 +68,7 @@ public class NoteCreation extends AppCompatActivity {
     public void uploadNote(View view) {
         saveUserStore();
         Intent intent = new Intent(getApplicationContext(), Table_Navigation.class);
-        intent.putExtra("name",document);
+        intent.putExtra("name", document);
         startActivity(intent);
         finish();
     }

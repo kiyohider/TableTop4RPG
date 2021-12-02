@@ -48,7 +48,7 @@ public class StoryFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerTablesNotes);
 
         Bundle extras = getActivity().getIntent().getExtras();
-        if (extras != null){
+        if (extras != null) {
             Document = extras.getString("name");
         }
 
@@ -59,17 +59,17 @@ public class StoryFragment extends Fragment {
         return view;
     }
 
-    public void loadUtilities(){
+    public void loadUtilities() {
         db.collection("tables").document(Document).collection("notes")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null){
-                            Log.e("teste",error.getMessage());
+                        if (error != null) {
+                            Log.e("teste", error.getMessage());
                             return;
                         }
                         List<DocumentSnapshot> docs = value.getDocuments();
-                        for (int i = 0;i< docs.size();i++){
+                        for (int i = 0; i < docs.size(); i++) {
                             String tittle = docs.get(i).get("noteName").toString();
                             String body = docs.get(i).get("noteText").toString();
                             makeNotes(tittle, body);
@@ -79,7 +79,7 @@ public class StoryFragment extends Fragment {
     }
 
     public void makeNotes(String name, String text) {
-        NotesMaster noteMaster = new NotesMaster(name,text);
+        NotesMaster noteMaster = new NotesMaster(name, text);
         this.notesList.add(noteMaster);
     }
 
@@ -88,7 +88,7 @@ public class StoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), NoteCreation.class);
-                intent.putExtra("name",Document);
+                intent.putExtra("name", Document);
                 startActivity(intent);
             }
         });
@@ -108,8 +108,8 @@ public class StoryFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Intent intent = new Intent(getContext(), NotesPage.class);
-                intent.putExtra("head",notesList.get(position).getnoteName());
-                intent.putExtra("body",notesList.get(position).getnoteText());
+                intent.putExtra("head", notesList.get(position).getnoteName());
+                intent.putExtra("body", notesList.get(position).getnoteText());
                 startActivity(intent);
             }
         };

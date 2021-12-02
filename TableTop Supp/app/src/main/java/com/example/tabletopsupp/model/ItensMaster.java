@@ -2,12 +2,12 @@ package com.example.tabletopsupp.model;
 
 public class ItensMaster {
 
-    private  String itemName;
-    private  String itemDescription;
+    private String itemName;
+    private String itemDescription;
     private String itemPhoto;
-    private  int itemWeigth;
+    private int itemWeigth;
 
-    public ItensMaster(){
+    public ItensMaster() {
     }
 
     public ItensMaster(String itemName, String itemDescription, String itemPhoto, int itemWeigth) {

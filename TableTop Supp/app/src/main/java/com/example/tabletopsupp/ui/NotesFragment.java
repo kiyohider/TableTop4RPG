@@ -59,19 +59,19 @@ public class NotesFragment extends Fragment {
         return view;
     }
 
-    public void loadUtilities(){
+    public void loadUtilities() {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         db.collection("tables").document(Document).collection("players").document(user).collection("notes")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null){
-                            Log.e("teste",error.getMessage());
+                        if (error != null) {
+                            Log.e("teste", error.getMessage());
                             return;
                         }
                         List<DocumentSnapshot> docs = value.getDocuments();
-                        for (int i = 0;i< docs.size();i++){
+                        for (int i = 0; i < docs.size(); i++) {
                             String tittle = docs.get(i).get("noteName").toString();
                             String body = docs.get(i).get("noteText").toString();
                             makeNotes(tittle, body);
@@ -81,7 +81,7 @@ public class NotesFragment extends Fragment {
     }
 
     public void makeNotes(String name, String text) {
-        NotesMaster noteMaster = new NotesMaster(name,text);
+        NotesMaster noteMaster = new NotesMaster(name, text);
         this.notesList.add(noteMaster);
     }
 
@@ -90,7 +90,7 @@ public class NotesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), NotePlayerCreation.class);
-                intent.putExtra("adventure",Document);
+                intent.putExtra("adventure", Document);
                 startActivity(intent);
             }
         });
@@ -110,8 +110,8 @@ public class NotesFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Intent intent = new Intent(getContext(), NotesPage.class);
-                intent.putExtra("head",notesList.get(position).getnoteName());
-                intent.putExtra("body",notesList.get(position).getnoteText());
+                intent.putExtra("head", notesList.get(position).getnoteName());
+                intent.putExtra("body", notesList.get(position).getnoteText());
                 startActivity(intent);
             }
         };

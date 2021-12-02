@@ -24,13 +24,14 @@ public class InvitePlayers extends AppCompatActivity {
         inviteAdventure = findViewById(R.id.adventureInvite);
 
         Bundle extras = getIntent().getExtras();
-        if (extras != null){
+        if (extras != null) {
             document = extras.getString("name");
         }
 
         invite();
     }
-    public void invite(){
+
+    public void invite() {
         inviteAdventure.setText(document);
     }
 
@@ -39,8 +40,8 @@ public class InvitePlayers extends AppCompatActivity {
         myIntent.setType("text/plain");
         String body = " adventure = " + inviteAdventure.getText().toString();
         String sub = "paste in enter new room";
-        myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
-        myIntent.putExtra(Intent.EXTRA_TEXT,body);
+        myIntent.putExtra(Intent.EXTRA_SUBJECT, sub);
+        myIntent.putExtra(Intent.EXTRA_TEXT, body);
         startActivity(Intent.createChooser(myIntent, "Share Using"));
     }
 
@@ -53,6 +54,5 @@ public class InvitePlayers extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

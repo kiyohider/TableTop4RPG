@@ -57,7 +57,7 @@ public class CreationStep02 extends AppCompatActivity {
         String wisdomT = wisdom.getText().toString();
         String charismaT = charisma.getText().toString();
 
-        TokenPlayer token = new TokenPlayer(name,infoRace,infoClass,"1","1",strenghtT,dexterityT,constitutionT,intelligenceT,wisdomT,charismaT);
+        TokenPlayer token = new TokenPlayer(name, infoRace, infoClass, "1", "1", strenghtT, dexterityT, constitutionT, intelligenceT, wisdomT, charismaT);
         db.collection("tables").document(adventure).collection("players")
                 .document(user).collection("Token").document(name).set(token).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -72,23 +72,22 @@ public class CreationStep02 extends AppCompatActivity {
                 });
 
         int modInt = Integer.parseInt(intelligenceT) - 10;
-        if (modInt >0){
+        if (modInt > 0) {
             skillClass += modInt;
 
             Intent intent = new Intent(getApplicationContext(), CreationStep03.class);
-            intent.putExtra("skillsR",skillRace);
-            intent.putExtra("skillsC",skillClass);
-            intent.putExtra("classes",infoClass);
-            intent.putExtra("adventure",adventure);
+            intent.putExtra("skillsR", skillRace);
+            intent.putExtra("skillsC", skillClass);
+            intent.putExtra("classes", infoClass);
+            intent.putExtra("adventure", adventure);
             startActivity(intent);
             finish();
-        }
-        else{
+        } else {
             Intent intent = new Intent(getApplicationContext(), CreationStep03.class);
-            intent.putExtra("skillsR",skillRace);
-            intent.putExtra("skillsC",skillClass);
-            intent.putExtra("classes",infoClass);
-            intent.putExtra("adventure",adventure);
+            intent.putExtra("skillsR", skillRace);
+            intent.putExtra("skillsC", skillClass);
+            intent.putExtra("classes", infoClass);
+            intent.putExtra("adventure", adventure);
             startActivity(intent);
             finish();
         }

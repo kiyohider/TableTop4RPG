@@ -1,15 +1,14 @@
 package com.example.tabletopsupp.model;
 
 public class PlayersMaster {
-    private  String playerName;
-    private  String playerRace;
+    private String playerName;
+    private String playerRace;
     private String playerClass;
-    private  String playerLevel;
+    private String playerLevel;
     private String uid;
 
 
-
-    public PlayersMaster(){
+    public PlayersMaster() {
     }
 
     public PlayersMaster(String playerName, String playerRace, String playerClass, String playerLevel, String uid) {

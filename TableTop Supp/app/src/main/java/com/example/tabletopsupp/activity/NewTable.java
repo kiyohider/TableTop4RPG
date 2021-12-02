@@ -33,7 +33,7 @@ public class NewTable extends AppCompatActivity implements AdapterView.OnItemSel
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private EditText Mname, Aname;
     private Button add;
-   // private boolean verify = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +73,6 @@ public class NewTable extends AppCompatActivity implements AdapterView.OnItemSel
         TableMaster tableMaster = new TableMaster(masterName, tableName, "1", system, user);
 
 
-
         db.collection("tables").document(tableName).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -104,8 +103,6 @@ public class NewTable extends AppCompatActivity implements AdapterView.OnItemSel
             }
         });
 
-
-
     }
 
     public void AddData() {
@@ -114,8 +111,8 @@ public class NewTable extends AppCompatActivity implements AdapterView.OnItemSel
             public void onClick(View v) {
 
                 saveUserStore();
-              //  Intent intent = new Intent(getApplicationContext(), GameMasterNavigation.class);
-             //   startActivity(intent);
+                //  Intent intent = new Intent(getApplicationContext(), GameMasterNavigation.class);
+                //   startActivity(intent);
 
             }
         });

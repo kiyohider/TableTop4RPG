@@ -51,13 +51,13 @@ public class PlayerTokenFragment extends Fragment {
         return view;
     }
 
-    public void loadUtilities(){
+    public void loadUtilities() {
 
         db.collection("tables").document(Document).collection("players").document(uid)
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                        String  namePlayer, racePlayer, classPlayer;
+                        String namePlayer, racePlayer, classPlayer;
 
                         namePlayer = value.get("playerName").toString();
                         racePlayer = value.get("playerRace").toString();
@@ -69,7 +69,7 @@ public class PlayerTokenFragment extends Fragment {
                 });
     }
 
-    public void tittle(String namePlay, String racePlay, String classPlay){
+    public void tittle(String namePlay, String racePlay, String classPlay) {
 
         name.setText(namePlay);
         race.setText(racePlay);
@@ -82,41 +82,40 @@ public class PlayerTokenFragment extends Fragment {
                 String supp;
 
                 supp = value.get("strenght").toString();
-                str.setText(value.get("strenght").toString() +"| "+ modcall(supp));
+                str.setText(value.get("strenght").toString() + "| " + modcall(supp));
                 supp = value.get("dexterity").toString();
-                dex.setText(value.get("dexterity").toString() +"| "+ modcall(supp));
+                dex.setText(value.get("dexterity").toString() + "| " + modcall(supp));
                 supp = value.get("constitution").toString();
-                consti.setText(value.get("constitution").toString() +"| "+ modcall(supp));
+                consti.setText(value.get("constitution").toString() + "| " + modcall(supp));
                 supp = value.get("intelligence").toString();
-                intel.setText(value.get("intelligence").toString() +"| "+ modcall(supp));
+                intel.setText(value.get("intelligence").toString() + "| " + modcall(supp));
                 supp = value.get("charisma").toString();
-                charis.setText(value.get("charisma").toString() +"| "+ modcall(supp));
+                charis.setText(value.get("charisma").toString() + "| " + modcall(supp));
                 supp = value.get("wisdom").toString();
-                sab.setText(value.get("wisdom").toString() +"| "+ modcall(supp));
+                sab.setText(value.get("wisdom").toString() + "| " + modcall(supp));
 
             }
         });
     }
 
-    public String modcall(String mod){
+    public String modcall(String mod) {
         int modAtt, modBase, modcalc = 10;
         String back;
 
-        modAtt=Integer.valueOf(mod);
+        modAtt = Integer.valueOf(mod);
 
         modBase = modAtt - modcalc;
-        if(modBase > 0){
+        if (modBase > 0) {
 
-            if (modBase != 10){
+            if (modBase != 10) {
                 modBase = modBase / 2;
             }
         }
-        if(modBase < 0){
+        if (modBase < 0) {
 
-            if(modAtt % 2 == 0 ){
+            if (modAtt % 2 == 0) {
                 modBase = modBase / 2;
-            }
-            else{
+            } else {
                 modBase = modBase / 2 - 1;
             }
         }
@@ -126,6 +125,5 @@ public class PlayerTokenFragment extends Fragment {
         return back;
 
     }
-
 
 }

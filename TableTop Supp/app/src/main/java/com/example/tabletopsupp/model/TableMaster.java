@@ -2,11 +2,11 @@ package com.example.tabletopsupp.model;
 
 public class TableMaster {
 
-    private  String masterName;
-    private  String adventureName;
-    private  String playNumber;
-    private  String systemName;
-    private   String master;
+    private String masterName;
+    private String adventureName;
+    private String playNumber;
+    private String systemName;
+    private String master;
 
     public TableMaster(String masterName, String adventureName, String playNumber, String systemName, String master) {
         this.masterName = masterName;

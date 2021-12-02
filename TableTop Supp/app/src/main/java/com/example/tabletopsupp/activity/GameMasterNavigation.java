@@ -24,7 +24,6 @@ public class GameMasterNavigation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_master_navigation);
 
-        //get to config action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -43,6 +42,7 @@ public class GameMasterNavigation extends AppCompatActivity {
         smartTabLayout.setViewPager(viewPager);
 
     }
+
     //back arrow button
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -53,6 +53,4 @@ public class GameMasterNavigation extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }

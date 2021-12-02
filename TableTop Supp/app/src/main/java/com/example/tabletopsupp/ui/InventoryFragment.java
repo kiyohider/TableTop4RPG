@@ -53,11 +53,8 @@ public class InventoryFragment extends Fragment {
         setAdapterItems();
         loadUtilities();
 
-
-
         return view;
     }
-
 
     public void loadUtilities() {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -85,7 +82,6 @@ public class InventoryFragment extends Fragment {
         });
     }
 
-
     public void makeItems(String Iname, String Icount, String Iweight) {
         ItensPlayer itensPlayer = new ItensPlayer(Iname, Icount, Iweight);
         this.itensPlayerList.add(itensPlayer);
@@ -93,24 +89,11 @@ public class InventoryFragment extends Fragment {
 
     private void setAdapterItems() {
         //setOnClickListener();
-        AdapterItensPlayer adapterItensPlayer = new AdapterItensPlayer(itensPlayerList,listener);
+        AdapterItensPlayer adapterItensPlayer = new AdapterItensPlayer(itensPlayerList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapterItensPlayer);
     }
-
-   /* private void setOnClickListener() {
-        listener = new AdapterTables.RecyclerViewClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                Intent intent = new Intent(getContext(), Table_Navigation.class);
-                intent.putExtra("name",itensPlayerList.get(position).getAdventureName());
-                startActivity(intent);
-            }
-        };
-    }
-
-    */
 
 }

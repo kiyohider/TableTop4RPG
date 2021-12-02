@@ -14,10 +14,10 @@ import com.example.tabletopsupp.model.NotesMaster;
 
 import java.util.List;
 
-public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyViewHolder>
-{
+public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyViewHolder> {
     private List<NotesMaster> notesList;
     private RecyclerViewClickListener listener;
+
     public AdapterNotes(List<NotesMaster> notes, RecyclerViewClickListener listener) {
         this.notesList = notes;
         this.listener = listener;
@@ -43,8 +43,7 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyViewHolder
     }
 
 
-
-    public  class MyViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView noteName;
 
         public MyViewHolder(@NonNull View notesView) {
@@ -61,7 +60,7 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyViewHolder
         }
     }
 
-    public  interface  RecyclerViewClickListener{
+    public interface RecyclerViewClickListener {
         void onClick(View view, int position);
     }
 }

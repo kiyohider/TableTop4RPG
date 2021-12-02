@@ -46,6 +46,8 @@ public class TablesFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerTablesGM);
         floatingActionButton = view.findViewById(R.id.addTable);
 
+        TableMaster tablestester = new TableMaster("nome mestre", "aventura", "1", "tormenta");
+        tableList.add(tablestester);
         setAdapterItems();
         loadUtilities();
         addItem();
@@ -56,26 +58,26 @@ public class TablesFragment extends Fragment {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         query = db.collection("tables").whereEqualTo("master", user).orderBy("adventureName");
 
-                query.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            Log.e("teste", error.getMessage());
-                            return;
-                        }
+        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (error != null) {
+                    Log.e("teste", error.getMessage());
+                    return;
+                }
 
-                        List<DocumentSnapshot> docs = value.getDocuments();
-                        for (int i = 0; i < docs.size(); i++) {
-                            String mName = docs.get(i).get("masterName").toString();
-                            String aName = docs.get(i).get("adventureName").toString();
-                            String numberPlay = docs.get(i).get("playNumber").toString();
-                            String system = docs.get(i).get("systemName").toString();
-                            makeItems(mName, aName, numberPlay, system);
-                        }
+                List<DocumentSnapshot> docs = value.getDocuments();
+                for (int i = 0; i < docs.size(); i++) {
+                    String mName = docs.get(i).get("masterName").toString();
+                    String aName = docs.get(i).get("adventureName").toString();
+                    String numberPlay = docs.get(i).get("playNumber").toString();
+                    String system = docs.get(i).get("systemName").toString();
+                    makeItems(mName, aName, numberPlay, system);
+                }
 
-                         
-                    }
-                });
+
+            }
+        });
     }
 
     public void makeItems(String mName, String aName, String numberPlay, String system) {
@@ -95,7 +97,7 @@ public class TablesFragment extends Fragment {
 
     private void setAdapterItems() {
         setOnClickListener();
-        AdapterTables adapterTables = new AdapterTables(tableList,listener);
+        AdapterTables adapterTables = new AdapterTables(tableList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
@@ -107,7 +109,7 @@ public class TablesFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Intent intent = new Intent(getContext(), Table_Navigation.class);
-                intent.putExtra("name",tableList.get(position).getAdventureName());
+                intent.putExtra("name", tableList.get(position).getAdventureName());
                 startActivity(intent);
             }
         };

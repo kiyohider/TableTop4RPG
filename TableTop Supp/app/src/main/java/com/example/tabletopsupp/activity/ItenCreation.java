@@ -36,7 +36,7 @@ public class ItenCreation extends AppCompatActivity {
     private ImageView imageItem;
     private Button btnImageItem;
     private Uri selectedUri;
-    private EditText itemName, itemDescription,weight;
+    private EditText itemName, itemDescription, weight;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -61,30 +61,29 @@ public class ItenCreation extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 0){
+        if (requestCode == 0) {
             selectedUri = data.getData();
             Bitmap bitmap = null;
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),selectedUri);
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedUri);
                 imageItem.setImageDrawable(new BitmapDrawable(bitmap));
                 btnImageItem.setAlpha(0);
-            }
-            catch (IOException e){
+            } catch (IOException e) {
             }
         }
     }
 
-    public void selectPhoto(){
-       Intent intent = new Intent(Intent.ACTION_PICK);
-       intent.setType("image/+");
-       startActivityForResult(intent,0);
+    public void selectPhoto() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/+");
+        startActivityForResult(intent, 0);
     }
 
-    private void saveUserStore(){
+    private void saveUserStore() {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String filename = itemName.getText().toString();
         final StorageReference reference = FirebaseStorage.getInstance()
-                .getReference("/"+user+"/"+ filename);
+                .getReference("/" + user + "/" + filename);
 
         reference.putFile(selectedUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -98,7 +97,7 @@ public class ItenCreation extends AppCompatActivity {
                                 String imageUrl = uri.toString();
                                 int Weight = Integer.parseInt(weight.getText().toString());
 
-                                ItensMaster itens = new ItensMaster(itemname,itemdescription,imageUrl,Weight);
+                                ItensMaster itens = new ItensMaster(itemname, itemdescription, imageUrl, Weight);
 
                                 db.collection("users")
                                         .document(user)
@@ -113,7 +112,7 @@ public class ItenCreation extends AppCompatActivity {
                                         .addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
-                                                Log.i("testeuri",e.getMessage());
+                                                Log.i("testeuri", e.getMessage());
                                             }
                                         });
                             }
@@ -122,15 +121,15 @@ public class ItenCreation extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.e("teste",e.getMessage(),e);
+                Log.e("teste", e.getMessage(), e);
             }
         });
     }
 
     public void uploadItem(View view) {
         saveUserStore();
-     //   Intent intent = new Intent(getApplicationContext(),GameMasterNavigation.class);
-      //  startActivity(intent);
+        //   Intent intent = new Intent(getApplicationContext(),GameMasterNavigation.class);
+        //  startActivity(intent);
         finish();
     }
 

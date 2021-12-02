@@ -32,11 +32,11 @@ import java.util.List;
 
 public class TablesOption extends AppCompatActivity {
 
-  //  private AdapterTables.RecyclerViewClickListener listener;
-   // private RecyclerView recyclerView;
-  //  private FloatingActionButton floatingActionButton;
-  //  private FirestoreRecyclerAdapter adapter;
-   // private FirebaseFirestore db;
+    //  private AdapterTables.RecyclerViewClickListener listener;
+    // private RecyclerView recyclerView;
+    //  private FloatingActionButton floatingActionButton;
+    //  private FirestoreRecyclerAdapter adapter;
+    // private FirebaseFirestore db;
 
 
     @Override

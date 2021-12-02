@@ -12,7 +12,7 @@ import com.example.tabletopsupp.R;
 import com.squareup.picasso.Picasso;
 
 public class ItemPage extends AppCompatActivity {
-    private TextView tittleI , descriptionI , weigthI;
+    private TextView tittleI, descriptionI, weigthI;
     private ImageView photoI;
 
     @Override
@@ -25,13 +25,13 @@ public class ItemPage extends AppCompatActivity {
         weigthI = findViewById(R.id.loadItemWeigth);
         photoI = findViewById(R.id.loadImageItem);
 
-        String tittle="";
-        String description="";
-        int weigth=0;
-        String photo="";
+        String tittle = "";
+        String description = "";
+        int weigth = 0;
+        String photo = "";
 
         Bundle extras = getIntent().getExtras();
-        if (extras != null){
+        if (extras != null) {
             tittle = extras.getString("tittle");
             description = extras.getString("description");
             weigth = extras.getInt("weigth");

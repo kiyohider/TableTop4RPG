@@ -1,11 +1,11 @@
 package com.example.tabletopsupp.model;
 
 public class ItensPlayer {
-    private  String itemName;
-    private  String itemCont;
-    private  String itemWeigth;
+    private String itemName;
+    private String itemCont;
+    private String itemWeigth;
 
-    public ItensPlayer(){
+    public ItensPlayer() {
     }
 
     public ItensPlayer(String itemName, String itemCont, String itemWeigth) {

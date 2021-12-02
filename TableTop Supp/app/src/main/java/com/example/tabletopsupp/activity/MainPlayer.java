@@ -27,12 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainPlayer extends AppCompatActivity {
-
     private RecyclerView recyclerView;
     private List<TableMaster> tableList = new ArrayList<>();
     private AdapterTables.RecyclerViewClickListener listener;
     private FloatingActionButton floatingActionButton;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,14 +43,14 @@ public class MainPlayer extends AppCompatActivity {
 
         setAdapterItems();
         loadUtilities();
-         addItem();
+        addItem();
 
     }
 
     public void loadUtilities() {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        db.collection("tables").whereEqualTo(user,user)
+        db.collection("tables").whereEqualTo(user, user)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -70,6 +70,7 @@ public class MainPlayer extends AppCompatActivity {
                     }
                 });
     }
+
     public void makeItems(String mName, String aName, String numberPlay, String system) {
         TableMaster tablesMaster = new TableMaster(mName, aName, numberPlay, system);
         this.tableList.add(tablesMaster);
@@ -87,7 +88,7 @@ public class MainPlayer extends AppCompatActivity {
 
     private void setAdapterItems() {
         setOnClickListener();
-        AdapterTables adapterTables = new AdapterTables(tableList,listener);
+        AdapterTables adapterTables = new AdapterTables(tableList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
@@ -99,7 +100,7 @@ public class MainPlayer extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 Intent intent = new Intent(getApplicationContext(), PlayerNavigation.class);
-                intent.putExtra("adventure",tableList.get(position).getAdventureName());
+                intent.putExtra("adventure", tableList.get(position).getAdventureName());
                 startActivity(intent);
             }
         };

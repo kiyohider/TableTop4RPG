@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class NotePlayerCreation extends AppCompatActivity {
-    private  String document = "";
+    private String document = "";
     private EditText tittle, body;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -28,7 +28,7 @@ public class NotePlayerCreation extends AppCompatActivity {
         setContentView(R.layout.activity_note_player_creation);
 
         Bundle extras = getIntent().getExtras();
-        if (extras != null){
+        if (extras != null) {
             document = extras.getString("adventure");
         }
 
@@ -63,7 +63,7 @@ public class NotePlayerCreation extends AppCompatActivity {
     public void uploadNote(View view) {
         saveUserStore();
         Intent intent = new Intent(getApplicationContext(), PlayerNavigation.class);
-        intent.putExtra("adventure",document);
+        intent.putExtra("adventure", document);
         startActivity(intent);
         finish();
     }

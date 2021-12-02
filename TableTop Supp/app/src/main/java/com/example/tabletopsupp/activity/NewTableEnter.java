@@ -66,7 +66,7 @@ public class NewTableEnter extends AppCompatActivity {
                                     }
                                 });
 
-                        db.collection("tables").document(adventure).update(user,user)
+                        db.collection("tables").document(adventure).update(user, user)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
@@ -80,7 +80,7 @@ public class NewTableEnter extends AppCompatActivity {
                                 });
 
                         Intent intent = new Intent(getApplicationContext(), CreationStep01.class);
-                        intent.putExtra("adventure",adventure);
+                        intent.putExtra("adventure", adventure);
                         startActivity(intent);
 
                         finish();
@@ -96,12 +96,7 @@ public class NewTableEnter extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -112,6 +107,5 @@ public class NewTableEnter extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

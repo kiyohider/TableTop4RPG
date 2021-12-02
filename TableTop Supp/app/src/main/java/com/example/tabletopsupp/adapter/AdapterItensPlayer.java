@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AdapterItensPlayer extends RecyclerView.Adapter<AdapterItensPlayer.MyViewHolder>{
+public class AdapterItensPlayer extends RecyclerView.Adapter<AdapterItensPlayer.MyViewHolder> {
     private List<ItensPlayer> itensPlayerListList;
     private RecyclerViewClickListener listener;
 
@@ -47,8 +47,7 @@ public class AdapterItensPlayer extends RecyclerView.Adapter<AdapterItensPlayer.
     }
 
 
-
-    public  class MyViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView itemName;
         TextView itemCount;
         TextView itemWeight;
@@ -71,7 +70,7 @@ public class AdapterItensPlayer extends RecyclerView.Adapter<AdapterItensPlayer.
         }
     }
 
-    public  interface  RecyclerViewClickListener{
+    public interface RecyclerViewClickListener {
         void onClick(View view, int position);
     }
 }

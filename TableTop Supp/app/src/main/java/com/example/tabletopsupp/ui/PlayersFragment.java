@@ -36,7 +36,7 @@ public class PlayersFragment extends Fragment {
     private FloatingActionButton floatingActionButton;
     private String Document = "";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private List <String> UIDplayer = new ArrayList<>();
+    private List<String> UIDplayer = new ArrayList<>();
     private int i = 0;
 
     @Override
@@ -47,7 +47,7 @@ public class PlayersFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerTablesPlayers);
 
         Bundle extras = getActivity().getIntent().getExtras();
-        if (extras != null){
+        if (extras != null) {
             Document = extras.getString("name");
         }
 
@@ -58,7 +58,7 @@ public class PlayersFragment extends Fragment {
         return view;
     }
 
-    public void loadUtilities(){
+    public void loadUtilities() {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         db.collection("tables").document(Document).collection("players")
@@ -93,14 +93,14 @@ public class PlayersFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), InvitePlayers.class);
-                intent.putExtra("name",Document);
+                intent.putExtra("name", Document);
                 startActivity(intent);
             }
         });
     }
 
     private void setAdapterItems() {
-         setOnClickListener();
+        setOnClickListener();
         AdapterPlayer adapterPlayer = new AdapterPlayer(playersList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -114,7 +114,7 @@ public class PlayersFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Intent intent = new Intent(getContext(), GameMasterTokenNavigation.class);
-                intent.putExtra("name",Document);
+                intent.putExtra("name", Document);
                 intent.putExtra("uid", playersList.get(position).getUid());
                 startActivity(intent);
             }

@@ -4,14 +4,14 @@ public class NotesMaster {
     private String noteName;
     private String noteText;
 
-    public NotesMaster(){
+    public NotesMaster() {
     }
 
     public NotesMaster(String noteName) {
         this.noteName = noteName;
     }
 
-    public NotesMaster(String noteName,String noteText) {
+    public NotesMaster(String noteName, String noteText) {
         this.noteName = noteName;
         this.noteText = noteText;
     }

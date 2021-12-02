@@ -22,14 +22,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CreationStep01 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private Spinner spinnerR,spinnerC;
-    private String itemSelectedR,itemSelectedC;
+    private Spinner spinnerR, spinnerC;
+    private String itemSelectedR, itemSelectedC;
     RacesDescription descriptionR = new RacesDescription();
     ClassDescription descriptionC = new ClassDescription();
     private EditText descriptionRace, descriptionClass, characterN;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private int skillsClass = 0;
-    private  int skillsRace = 0;
+    private int skillsRace = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +47,9 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
         spinnerClass();
 
 
-
     }
 
-    public void spinnerRace(){
+    public void spinnerRace() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.races, android.R.layout.simple_spinner_item);
 
@@ -59,7 +58,8 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
         spinnerR.setAdapter(adapter);
         spinnerR.setOnItemSelectedListener(this);
     }
-    public void spinnerClass(){
+
+    public void spinnerClass() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.categoryies, android.R.layout.simple_spinner_item);
 
@@ -71,15 +71,13 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(parent.getId() == R.id.spinnerRace){
+        if (parent.getId() == R.id.spinnerRace) {
             itemSelectedR = (String) parent.getItemAtPosition(position);
             descriptionTextR();
-        }
-       else if(parent.getId() == R.id.spinnerClass){
+        } else if (parent.getId() == R.id.spinnerClass) {
             itemSelectedC = (String) parent.getItemAtPosition(position);
             descriptionTextC();
         }
-
 
 
     }
@@ -88,40 +86,36 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
-    public void descriptionTextR(){
+    public void descriptionTextR() {
         String text = " ";
 
-        if(itemSelectedR.equalsIgnoreCase("human")){
+        if (itemSelectedR.equalsIgnoreCase("human")) {
             text = descriptionR.human();
             descriptionRace.setText(text);
             skillsRace = 2;
-        }
-        else if(itemSelectedR.equalsIgnoreCase("elf")){
+        } else if (itemSelectedR.equalsIgnoreCase("elf")) {
             text = descriptionR.elf();
             descriptionRace.setText(text);
 
-        }
-        else{
+        } else {
             text = descriptionR.dwarf();
             descriptionRace.setText(text);
 
         }
     }
 
-    public void descriptionTextC(){
+    public void descriptionTextC() {
         String text = " ";
 
-        if(itemSelectedC.equalsIgnoreCase("guerreiro")){
+        if (itemSelectedC.equalsIgnoreCase("guerreiro")) {
             text = descriptionC.warrior();
             descriptionClass.setText(text);
             skillsClass = 2;
-        }
-        else if(itemSelectedC.equalsIgnoreCase("ladino")){
+        } else if (itemSelectedC.equalsIgnoreCase("ladino")) {
             text = descriptionC.rogue();
             descriptionClass.setText(text);
             skillsClass = 8;
-        }
-        else{
+        } else {
             text = descriptionC.fighter();
             descriptionClass.setText(text);
             skillsClass = 4;
@@ -132,31 +126,31 @@ public class CreationStep01 extends AppCompatActivity implements AdapterView.OnI
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String name = characterN.getText().toString();
         String adventure = "";
-        PlayersMaster player = new PlayersMaster(name,itemSelectedR,itemSelectedC,"1", user);
+        PlayersMaster player = new PlayersMaster(name, itemSelectedR, itemSelectedC, "1", user);
 
         Bundle extras = getIntent().getExtras();
-        if (extras != null){
+        if (extras != null) {
             adventure = extras.getString("adventure");
 
             db.collection("tables").document(adventure).collection("players")
-                .document(user).set(player).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-            }
+                    .document(user).set(player).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                }
             })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.i("testeuri", e.getMessage());
-                    }
-                });
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.i("testeuri", e.getMessage());
+                        }
+                    });
             Intent intent = new Intent(getApplicationContext(), CreationStep02.class);
-            intent.putExtra("adventure",adventure);
-            intent.putExtra("class",itemSelectedC);
-            intent.putExtra("race",itemSelectedR);
-            intent.putExtra("name",name);
-            intent.putExtra("skillC",skillsClass);
-            intent.putExtra("skillR",skillsRace);
+            intent.putExtra("adventure", adventure);
+            intent.putExtra("class", itemSelectedC);
+            intent.putExtra("race", itemSelectedR);
+            intent.putExtra("name", name);
+            intent.putExtra("skillC", skillsClass);
+            intent.putExtra("skillR", skillsRace);
 
             startActivity(intent);
             finish();

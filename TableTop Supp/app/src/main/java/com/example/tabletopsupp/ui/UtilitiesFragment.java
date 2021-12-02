@@ -46,25 +46,27 @@ public class UtilitiesFragment extends Fragment {
         floatingActionButton = view.findViewById(R.id.addItem);
         recyclerView = view.findViewById(R.id.recyclerTablesItems);
 
+        ItensMaster itemsteste = new ItensMaster("teste", "teste", "https://firebasestorage.googleapis.com/v0/b/tabletopsupp.appspot.com/o/RX6NqGhqiTfAal3DKRfBxahoQA72%2Fitem%20exemplo?alt=media&token=a1f667d7-92c2-4afb-ab47-0a72db9a1036", 5);
+        tableList.add(itemsteste);
         loadUtilities();
         addItem();
         setAdapterItems();
         return view;
     }
 
-    public void loadUtilities(){
+    public void loadUtilities() {
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         db.collection("users").document(user).collection("utilites")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null){
-                            Log.e("teste",error.getMessage());
+                        if (error != null) {
+                            Log.e("teste", error.getMessage());
                             return;
                         }
                         List<DocumentSnapshot> docs = value.getDocuments();
-                        for (int i = 0;i< docs.size();i++){
+                        for (int i = 0; i < docs.size(); i++) {
                             String photo = docs.get(i).get("itemPhoto").toString();
                             String name = docs.get(i).get("itemName").toString();
                             String description = docs.get(i).get("itemDescription").toString();
@@ -75,8 +77,8 @@ public class UtilitiesFragment extends Fragment {
                 });
     }
 
-    public void makeItems(String name, String description, String photo, int weight){
-        ItensMaster itemsMaster = new ItensMaster(name,description,photo,weight);
+    public void makeItems(String name, String description, String photo, int weight) {
+        ItensMaster itemsMaster = new ItensMaster(name, description, photo, weight);
         this.tableList.add(itemsMaster);
     }
 
@@ -84,15 +86,15 @@ public class UtilitiesFragment extends Fragment {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),ItenCreation.class);
+                Intent intent = new Intent(getContext(), ItenCreation.class);
                 startActivity(intent);
             }
         });
     }
 
-    private void setAdapterItems(){
+    private void setAdapterItems() {
         setOnClickListener();
-        AdapterItens adapterItems = new AdapterItens(tableList,listener);
+        AdapterItens adapterItems = new AdapterItens(tableList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
@@ -104,10 +106,10 @@ public class UtilitiesFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Intent intent = new Intent(getContext(), ItemPage.class);
-                intent.putExtra("tittle",tableList.get(position).getItemName());
-                intent.putExtra("description",tableList.get(position).getItemDescription());
-                intent.putExtra("photo",tableList.get(position).getItemPhoto());
-                intent.putExtra("weigth",tableList.get(position).getItemWeigth());
+                intent.putExtra("tittle", tableList.get(position).getItemName());
+                intent.putExtra("description", tableList.get(position).getItemDescription());
+                intent.putExtra("photo", tableList.get(position).getItemPhoto());
+                intent.putExtra("weigth", tableList.get(position).getItemWeigth());
                 startActivity(intent);
             }
         };

@@ -217,9 +217,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Next"
                 android:onClick="nextStep03"
-                />
+                android:text="Next" />
         </LinearLayout>
     </ScrollView>
 
